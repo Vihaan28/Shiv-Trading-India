@@ -494,6 +494,36 @@ Client decisions on record from this session:
   scaffolded product ships with `specifications: []`; the client will have
   employees fill these in through the CMS once it's finalised.
 
+### Session 4 — Netlify Identity invite flow fixed (Claude, same day)
+
+Client reported: added their email under Netlify Identity → Invite users,
+received the invite email, clicked it, and it "redirected to the public
+website" with no way to actually log in to `/admin`.
+
+**Root cause:** Netlify Identity invite/recovery/confirmation links point at
+the site's homepage with an auth token in the URL hash (e.g.
+`yoursite.com/#invite_token=...`), not at `/admin/`. Only `admin/index.html`
+had the Netlify Identity widget script loaded — the public homepage had no
+code that could notice or act on that token, so it was silently dropped and
+the visitor just saw the ordinary site.
+
+**Fix:** added the same Netlify Identity widget + an `on('login')` redirect to
+`/admin/` at the bottom of `index.html` (see the comment there). The widget
+auto-detects a token in the URL wherever it's loaded and shows the
+set-password screen; the redirect then sends a newly-confirmed user straight
+into the CMS instead of leaving them on the homepage.
+
+**Important:** this only works once the site has been **redeployed** with this
+change. The original invite token is not consumed by loading a page that
+ignores it, so the client should click the *same* link from the original
+invite email again after the next deploy, rather than needing a fresh invite.
+Documented in `ADMIN-GUIDE.md` under "Inviting an employee".
+
+If invites are still silently swallowed after this, the next thing to check is
+whether Identity's configured **Site URL** (Netlify → Site configuration →
+Identity → Settings) actually matches where the site is really deployed —
+a mismatch there sends the token to a URL this fix was never loaded on.
+
 ### Not done / next up
 - Replace placeholder phone, WhatsApp and email in the CMS.
 - Replace placeholder imagery with real photographs.

@@ -295,5 +295,26 @@
 <script src="/assets/js/rfq.js"></script>
 <script src="/assets/js/search.js"></script>
 <script src="/assets/js/main.js"></script>
+
+<!--
+  Netlify sends invite / password-reset / email-confirmation links to the
+  site's root URL with a token in the address (e.g. /#invite_token=...), not
+  to /admin/. This widget reads that token wherever it finds it, shows the
+  "set your password" screen, and then sends the employee on to the CMS once
+  they're signed in. Without this, an invite link just lands on the ordinary
+  homepage and silently does nothing -- see ADMIN-GUIDE.md.
+-->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', function (user) {
+      if (!user) {
+        window.netlifyIdentity.on('login', function () {
+          document.location.href = '/admin/';
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>

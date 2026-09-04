@@ -54,6 +54,17 @@ They get an email, click the link, set a password, and land in `/admin`.
 The invitation link expires. If they leave it too long, delete the pending user
 and invite them again.
 
+> **If clicking the invite link just opens the ordinary website and nothing
+> happens:** the site needs to be redeployed first. Netlify's invite links
+> point at your homepage with a token in the address bar (something like
+> `yoursite.com/#invite_token=...`), and only the homepage's own code can
+> notice that token and act on it — a fresh deploy of this project adds exactly
+> that. Once the new deploy is live, **click the same link from the original
+> email again** (the token is only consumed once it's actually used, so
+> nothing was lost the first time) — it should now prompt to set a password
+> and then drop them straight into `/admin`. If the link errors out as expired
+> after that, delete the pending user in Identity and send a fresh invite.
+
 ## Removing an employee
 
 **Do this the same day someone leaves.**

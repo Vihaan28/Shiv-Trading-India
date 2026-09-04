@@ -1,4 +1,4 @@
-  ---
+---
 phone: "+91 98100 00000"
 phoneAlt: "+91 11 2000 0000"
 email: info@shivtradingindia.com

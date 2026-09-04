@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Content Manager — Shiv Trading India</title>
+<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+<style>
+  /* Shown only while the CMS is loading, and if it fails to load. */
+  #cms-boot {
+    font: 15px/1.6 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #343a41;
+    max-width: 34rem;
+    margin: 18vh auto 0;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+  #cms-boot h1 { font-size: 1.15rem; color: #16181b; margin: 0 0 .5rem; }
+  #cms-boot p { margin: 0; color: #63696f; }
+  #cms-boot code { background: #f0eee9; padding: .1rem .35rem; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div id="cms-boot">
+  <h1>Opening the content manager…</h1>
+  <p>If this message stays on screen, check your internet connection and refresh the page.</p>
+</div>
+
+<!-- Netlify Identity: handles employee log-in and invitations. -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- Decap CMS -->
+<script src="https://unpkg.com/decap-cms@^3.8.4/dist/decap-cms.js"></script>
+
+<script>
+  // Hide the fallback message once the CMS has actually rendered.
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var boot = document.getElementById('cms-boot');
+      if (boot && window.CMS) boot.remove();
+    }, 1200);
+  });
+
+  // After an employee accepts an invitation, send them straight into the CMS
+  // rather than back to the public homepage.
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', function (user) {
+      if (!user) {
+        window.netlifyIdentity.on('login', function () {
+          document.location.href = '/admin/';
+        });
+      }
+    });
+  }
+</script>
+</body>
+</html>

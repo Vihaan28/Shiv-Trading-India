@@ -1,0 +1,429 @@
+# =============================================================================
+# Decap CMS configuration — Shiv Trading India
+# =============================================================================
+# Employees never touch this file. It defines the forms they see at /admin.
+#
+# Field names here must match what scripts/build-content.js reads. If you add a
+# field, add it to the build script's normaliser too, or it will be ignored.
+# =============================================================================
+
+backend:
+  name: git-gateway
+  branch: main
+  commit_messages:
+    create: 'Add {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload image "{{path}}"'
+    deleteMedia: 'Delete image "{{path}}"'
+
+# Uncomment for local CMS development (see README, "Editing content locally"):
+# local_backend: true
+
+# Employee uploads land here, kept apart from the site's own design assets.
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+publish_mode: simple
+site_url: https://www.shivtradingindia.com
+display_url: https://www.shivtradingindia.com
+# Relative, so it also resolves on Netlify deploy previews and locally.
+logo_url: /assets/images/logo-mark.png
+
+locale: en
+
+collections:
+  # ===========================================================================
+  # PRODUCTS
+  # ===========================================================================
+  - name: products
+    label: Products
+    label_singular: Product
+    description: >-
+      Everything in the catalogue. Turning "Show this product on the website"
+      off hides a product from the site without deleting it.
+    folder: content/products
+    create: true
+    delete: true
+    slug: "{{fields.slug}}"
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: name
+    summary: "{{name}} — {{availability}}"
+    sortable_fields: [displayOrder, name, availability]
+    view_groups:
+      - label: Category
+        field: category
+    fields:
+      - label: Product name
+        name: name
+        widget: string
+        hint: What customers will see, e.g. "Enamelled Copper Winding Wire".
+
+      - label: Web address (slug)
+        name: slug
+        widget: string
+        pattern:
+          ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Use lowercase letters, numbers and hyphens only — for example: enamelled-copper-wire']
+        hint: >-
+          This becomes the page address, e.g. shivtradingindia.com/product/enamelled-copper-wire.
+          Do not change it once the product is live — old links will stop working.
+
+      - label: Category
+        name: category
+        widget: relation
+        collection: categories
+        search_fields: [name]
+        value_field: slug
+        display_fields: [name]
+        hint: Pick from the categories you have created. Create the category first if it is not listed.
+
+      - label: Brand / Manufacturer
+        name: brand
+        widget: string
+        required: false
+        hint: >-
+          Optional. The brand this listing is stocked under, e.g. "BIC" or "Garware".
+          Shown on the product page. Leave blank for a product that has no brand.
+
+      - label: Short description
+        name: shortDescription
+        widget: text
+        hint: One or two sentences. This is what shows on the product card and in search results.
+
+      - label: Full description
+        name: description
+        widget: text
+        hint: The main description on the product page. Leave a blank line between paragraphs.
+
+      # --- pricing ------------------------------------------------------------
+      - label: How should the price be shown?
+        name: priceType
+        widget: select
+        default: price-on-request
+        options:
+          - { label: 'Price on request (no number shown)', value: price-on-request }
+          - { label: 'Fixed price', value: fixed }
+          - { label: 'Starting from', value: starting-from }
+          - { label: 'Hide pricing completely', value: hidden }
+
+      - label: Price
+        name: price
+        widget: string
+        required: false
+        hint: >-
+          Numbers only, e.g. 450 (the rupee symbol is added automatically).
+          Leave blank for "Price on request" or "Hide pricing".
+
+      - label: Price unit
+        name: priceUnit
+        widget: select
+        required: false
+        default: per kg
+        options: ['per kg', 'per litre', 'per sheet', 'per roll', 'per metre', 'per piece', 'per tonne', 'per coil']
+        hint: Also decides the default ordering unit on quote requests.
+
+      # --- images -------------------------------------------------------------
+      - label: Main image
+        name: primaryImage
+        widget: image
+        required: false
+        media_library: { config: { multiple: false } }
+        hint: The photo shown on the product card and at the top of the product page.
+
+      - label: More images
+        name: images
+        widget: list
+        required: false
+        field: { label: Image, name: image, widget: image }
+        hint: Optional extra photos. They appear as thumbnails under the main image.
+
+      # --- specifications -----------------------------------------------------
+      - label: Technical specifications
+        name: specifications
+        widget: list
+        required: false
+        label_singular: Specification
+        summary: '{{fields.key}}: {{fields.value}}'
+        fields:
+          - { label: Property, name: key, widget: string, hint: 'e.g. Material, Thickness, Thermal Class' }
+          - { label: Value, name: value, widget: string, hint: 'e.g. Copper, 0.5 mm, Class H (180 C)' }
+        hint: Add as many rows as you need. These show as a table on the product page.
+
+      # --- status -------------------------------------------------------------
+      - label: Availability
+        name: availability
+        widget: select
+        default: in-stock
+        options:
+          - { label: 'In stock', value: in-stock }
+          - { label: 'Limited availability', value: limited }
+          - { label: 'Available on request', value: on-request }
+          - { label: 'Out of stock', value: out-of-stock }
+          - { label: 'Discontinued', value: discontinued }
+
+      - label: Show this product on the website
+        name: published
+        widget: boolean
+        default: true
+        hint: Turn this off to hide the product without deleting it.
+
+      - label: Mark as featured
+        name: featured
+        widget: boolean
+        default: false
+        hint: Featured products get a badge and are sorted to the top of the catalogue.
+
+      - label: Show on the homepage
+        name: showOnHomepage
+        widget: boolean
+        default: false
+        hint: Adds this product to the "Selected products" section on the homepage.
+
+      - label: Display order
+        name: displayOrder
+        widget: number
+        default: 50
+        value_type: int
+        min: 1
+        hint: Lower numbers appear first. Products with the same number sort alphabetically.
+
+      # --- SEO ----------------------------------------------------------------
+      - label: Google title
+        name: seoTitle
+        widget: string
+        required: false
+        hint: >-
+          Optional. The headline Google shows, ideally under 60 characters.
+          Leave blank and we will use the product name.
+
+      - label: Google description
+        name: seoDescription
+        widget: text
+        required: false
+        hint: >-
+          Optional. The grey text under the Google result, ideally under 155 characters.
+          Leave blank and we will use the short description.
+
+      - label: Extra details (optional)
+        name: body
+        widget: markdown
+        required: false
+        hint: Applications, ordering notes, anything else worth adding below the description.
+
+  # ===========================================================================
+  # CATEGORIES
+  # ===========================================================================
+  - name: categories
+    label: Categories
+    label_singular: Category
+    description: >-
+      Groups of products. A new category appears on the website automatically —
+      no developer needed.
+    folder: content/categories
+    create: true
+    delete: true
+    slug: "{{fields.slug}}"
+    extension: md
+    format: yaml-frontmatter
+    identifier_field: name
+    summary: "{{name}}"
+    sortable_fields: [displayOrder, name]
+    fields:
+      - label: Category name
+        name: name
+        widget: string
+
+      - label: Web address (slug)
+        name: slug
+        widget: string
+        pattern:
+          ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Use lowercase letters, numbers and hyphens only']
+        hint: >-
+          Becomes shivtradingindia.com/category/your-slug. Do not change it once
+          products have been assigned to this category.
+
+      - label: Description
+        name: description
+        widget: text
+        hint: One or two sentences, shown on the category card and at the top of the category page.
+
+      - label: Category image
+        name: image
+        widget: image
+        required: false
+
+      - label: Show this category on the website
+        name: published
+        widget: boolean
+        default: true
+
+      - label: Show on the homepage
+        name: featured
+        widget: boolean
+        default: true
+
+      - label: Display order
+        name: displayOrder
+        widget: number
+        default: 50
+        value_type: int
+        min: 1
+
+      - label: Google title
+        name: seoTitle
+        widget: string
+        required: false
+
+      - label: Google description
+        name: seoDescription
+        widget: text
+        required: false
+
+      - label: Extra details (optional)
+        name: body
+        widget: markdown
+        required: false
+        hint: Shown below the product list on the category page.
+
+  # ===========================================================================
+  # WEBSITE SETTINGS
+  # ===========================================================================
+  - name: settings
+    label: Website Settings
+    description: Text and contact details used across the website.
+    files:
+      # --- contact ------------------------------------------------------------
+      - name: contact
+        label: Contact Details
+        file: content/settings/contact.md
+        description: Used in the footer, the contact page, WhatsApp links and the menu — change it once here and it updates everywhere.
+        fields:
+          - { label: Phone number, name: phone, widget: string, hint: 'Shown with a click-to-call link, e.g. +91 98100 00000' }
+          - { label: Second phone number, name: phoneAlt, widget: string, required: false, hint: 'Optional. Leave blank to hide it.' }
+          - { label: Email address, name: email, widget: string }
+          - label: WhatsApp number
+            name: whatsapp
+            widget: string
+            hint: >-
+              Include the country code, e.g. +91 98100 00000. This powers the green
+              WhatsApp button. Leave blank to hide the button everywhere.
+          - { label: 'Address — line 1', name: addressLine1, widget: string }
+          - { label: 'Address — line 2', name: addressLine2, widget: string, required: false }
+          - { label: City, name: city, widget: string }
+          - { label: State, name: state, widget: string, required: false }
+          - { label: PIN code, name: postalCode, widget: string, required: false }
+          - { label: Country, name: country, widget: string, default: India }
+          - label: Business hours
+            name: businessHours
+            widget: text
+            required: false
+            hint: 'One line per row, for example: Monday to Saturday, 10:00 am - 7:00 pm'
+          - label: Google Maps embed link
+            name: mapEmbedUrl
+            widget: string
+            required: false
+            hint: >-
+              Optional. In Google Maps choose Share, then Embed a map, then copy only
+              the address inside src="...". Leave blank to hide the map.
+
+      # --- homepage -----------------------------------------------------------
+      - name: homepage
+        label: Homepage
+        file: content/settings/homepage.md
+        description: Everything written on the homepage.
+        fields:
+          - { label: Small line above the headline, name: heroEyebrow, widget: string }
+          - { label: Main headline, name: heroTitle, widget: string }
+          - { label: Headline paragraph, name: heroDescription, widget: text }
+          - { label: Background image, name: heroImage, widget: image, required: false }
+          - { label: 'First button — text', name: heroPrimaryCtaText, widget: string, default: Explore Products }
+          - { label: 'First button — link', name: heroPrimaryCtaLink, widget: string, default: /products.html }
+          - { label: 'Second button — text', name: heroSecondaryCtaText, widget: string, default: Request a Quote }
+          - { label: 'Second button — link', name: heroSecondaryCtaLink, widget: string, default: /rfq.html }
+
+          - label: Highlights strip
+            name: trustItems
+            widget: list
+            max: 4
+            summary: '{{fields.value}} — {{fields.label}}'
+            hint: Up to four short highlights shown at the bottom of the homepage banner. Only state things that are actually true.
+            fields:
+              - { label: Big text, name: value, widget: string, hint: 'e.g. 25+' }
+              - { label: Small text below, name: label, widget: string, hint: 'e.g. Years in the trade' }
+
+          - { label: 'Categories section — heading', name: categoriesHeading, widget: string }
+          - { label: 'Categories section — subheading', name: categoriesSubheading, widget: text }
+
+          - { label: 'Products section — heading', name: productsHeading, widget: string }
+          - { label: 'Products section — subheading', name: productsSubheading, widget: text }
+
+          - { label: 'About section — heading', name: aboutHeading, widget: string }
+          - { label: 'About section — text', name: aboutText, widget: text }
+          - { label: 'About section — image', name: aboutImage, widget: image, required: false }
+
+          - { label: 'Industries section — heading', name: industriesHeading, widget: string }
+          - { label: 'Industries section — subheading', name: industriesSubheading, widget: text }
+          - label: Industries
+            name: industries
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+
+          - { label: 'Why-us section — heading', name: whyHeading, widget: string }
+          - label: Why-us points
+            name: whyItems
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+
+          - { label: 'Closing banner — heading', name: ctaHeading, widget: string }
+          - { label: 'Closing banner — text', name: ctaText, widget: text }
+
+      # --- about --------------------------------------------------------------
+      - name: about
+        label: About Page
+        file: content/settings/about.md
+        description: The text on the About page.
+        fields:
+          - { label: Small line above the headline, name: heroEyebrow, widget: string }
+          - { label: Page headline, name: heroTitle, widget: string }
+          - { label: Headline paragraph, name: heroDescription, widget: text }
+
+          - { label: 'Intro — heading', name: introHeading, widget: string }
+          - { label: 'Intro — text', name: introText, widget: text }
+          - { label: 'Intro — image', name: introImage, widget: image, required: false }
+
+          - { label: 'What we supply — heading', name: supplyHeading, widget: string }
+          - { label: 'What we supply — text', name: supplyText, widget: text }
+
+          - { label: 'How we work — heading', name: approachHeading, widget: string }
+          - label: How we work — points
+            name: approachItems
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+
+          - { label: 'Experience — heading', name: experienceHeading, widget: string }
+          - { label: 'Experience — text', name: experienceText, widget: text }
+
+      # --- general ------------------------------------------------------------
+      - name: general
+        label: Company Details
+        file: content/settings/general.md
+        description: The company name and description used in the footer and by Google.
+        fields:
+          - { label: Full legal company name, name: companyName, widget: string }
+          - { label: Short name, name: shortName, widget: string }
+          - { label: Tagline, name: tagline, widget: string, required: false }
+          - label: Website description
+            name: siteDescription
+            widget: text
+            hint: One or two sentences describing the business. Used in the footer and by search engines.
+          - { label: Years of experience, name: yearsOfExperience, widget: string, hint: 'Just the number, e.g. 25' }

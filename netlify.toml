@@ -1,0 +1,99 @@
+# =============================================================================
+# Netlify configuration — Shiv Trading India
+# =============================================================================
+# The build turns /content (written by Decap CMS) into /data.json and
+# /sitemap.xml, which the frontend fetches. Netlify runs this on every deploy,
+# including the deploys Decap triggers when an employee clicks Publish.
+# =============================================================================
+
+[build]
+  command = "npm run build"
+  publish = "."
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# -----------------------------------------------------------------------------
+# Clean, crawlable URLs for the dynamic product and category templates.
+#
+#   /product/enamelled-copper-winding-wire   ->  product.html   (status 200)
+#   /category/copper-winding-wires           ->  category.html  (status 200)
+#
+# Status 200 is a rewrite, not a redirect: the browser keeps the pretty URL, and
+# the page reads the slug back out of the path. These are the URLs listed in
+# sitemap.xml and set as each page's canonical.
+# -----------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/product/*"
+  to = "/product.html"
+  status = 200
+
+[[redirects]]
+  from = "/category/*"
+  to = "/category.html"
+  status = 200
+
+# Older query-string links keep working.
+[[redirects]]
+  from = "/products/*"
+  to = "/product/:splat"
+  status = 301
+
+# NOTE: there is deliberately no catch-all redirect. Netlify serves 404.html
+# for anything unmatched, which is what a multi-page site should do.
+
+# -----------------------------------------------------------------------------
+# Security headers
+# -----------------------------------------------------------------------------
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# -----------------------------------------------------------------------------
+# Caching
+#
+# Images are content-addressed enough in practice to cache hard. CSS and JS are
+# NOT filename-hashed, so they must revalidate — otherwise a design fix could
+# sit unseen in visitors' browsers for months.
+# -----------------------------------------------------------------------------
+
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# The generated catalogue. Must revalidate so a newly published product appears
+# immediately rather than after a cache expiry.
+[[headers]]
+  for = "/data.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# The CMS itself is never cached, so config changes take effect on reload.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Cache-Control = "no-store"
+    X-Robots-Tag = "noindex, nofollow"

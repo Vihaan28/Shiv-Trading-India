@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Abstract material illustration">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#22262b"/><stop offset="1" stop-color="#16181b"/>
+  </linearGradient><linearGradient id="tone" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#8c8f94"/><stop offset="1" stop-color="#5c6066"/>
+  </linearGradient></defs>
+<rect width="800" height="600" fill="url(#bg)"/>
+<g><rect x="235.6" y="252.0" width="400.0" height="204.0" rx="2" fill="url(#tone)" opacity="0.34"/><rect x="216.7" y="225.0" width="400.0" height="204.0" rx="2" fill="url(#tone)" opacity="0.48"/><rect x="197.8" y="198.0" width="400.0" height="204.0" rx="2" fill="url(#tone)" opacity="0.62"/><rect x="178.9" y="171.0" width="400.0" height="204.0" rx="2" fill="url(#tone)" opacity="0.76"/><rect x="160.0" y="144.0" width="400.0" height="204.0" rx="2" fill="url(#tone)" opacity="0.90"/></g>
+</svg>

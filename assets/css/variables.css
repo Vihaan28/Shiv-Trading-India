@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Design tokens
+   Refined industrial palette: graphite ink, warm off-white ground, copper as
+   a restrained accent. Radii and shadows are kept deliberately small -- the
+   design reads premium through spacing, type and hairlines, not through
+   rounded boxes and drop shadows.
+   ========================================================================== */
+
+:root {
+  /* --- Ink (primary: deep charcoal / graphite) --------------------------- */
+  --ink:            #16181b;
+  --ink-2:          #22262b;
+  --ink-3:          #343a41;
+  --ink-soft:       rgba(22, 24, 27, 0.06);
+
+  /* --- Paper (secondary: warm white / off-white) ------------------------- */
+  --paper:          #ffffff;
+  --paper-2:        #f7f6f3;
+  --paper-3:        #efece6;
+
+  /* --- Hairlines and supporting greys ------------------------------------ */
+  --line:           #e4e0d9;
+  --line-2:         #d3cec5;
+  --line-dark:      rgba(255, 255, 255, 0.11);
+
+  --muted:          #63696f;
+  --muted-2:        #8a9096;
+  --muted-invert:   #a7adb4;
+
+  /* --- Copper accent (used sparingly) ------------------------------------ */
+  --copper:         #a9632c;
+  --copper-2:       #c07d3f;
+  --copper-3:       #8a4f21;
+  --copper-wash:    rgba(169, 99, 44, 0.08);
+  --copper-line:    rgba(169, 99, 44, 0.28);
+
+  /* --- Status (availability badges; muted on purpose) -------------------- */
+  --ok:             #2f6f4f;
+  --ok-wash:        rgba(47, 111, 79, 0.10);
+  --warn:           #8a6516;
+  --warn-wash:      rgba(138, 101, 22, 0.11);
+  --info:           #40607f;
+  --info-wash:      rgba(64, 96, 127, 0.10);
+  --off:            #74797e;
+  --off-wash:       rgba(116, 121, 126, 0.11);
+  --danger:         #a03028;
+  --danger-wash:    rgba(160, 48, 40, 0.09);
+
+  /* --- Typography -------------------------------------------------------- */
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Fluid type scale */
+  --t-eyebrow:  0.75rem;
+  --t-xs:       0.8125rem;
+  --t-sm:       0.875rem;
+  --t-base:     1rem;
+  --t-lg:       1.0625rem;
+  --t-xl:       clamp(1.125rem, 0.4vw + 1.03rem, 1.25rem);
+  --t-h4:       clamp(1.125rem, 0.5vw + 1rem, 1.3125rem);
+  --t-h3:       clamp(1.3125rem, 0.9vw + 1.1rem, 1.625rem);
+  --t-h2:       clamp(1.75rem, 2vw + 1.15rem, 2.625rem);
+  --t-h1:       clamp(2.125rem, 3vw + 1.3rem, 3.375rem);
+  --t-display:  clamp(2.5rem, 4.6vw + 1.2rem, 4.5rem);
+
+  --lh-tight:   1.12;
+  --lh-snug:    1.28;
+  --lh-normal:  1.55;
+  --lh-relaxed: 1.72;
+
+  --track-tight:  -0.022em;
+  --track-snug:   -0.014em;
+  --track-wide:    0.02em;
+  --track-caps:    0.13em;
+
+  /* --- Spacing (4px base) ------------------------------------------------ */
+  --s-1:  0.25rem;
+  --s-2:  0.5rem;
+  --s-3:  0.75rem;
+  --s-4:  1rem;
+  --s-5:  1.5rem;
+  --s-6:  2rem;
+  --s-7:  2.5rem;
+  --s-8:  3rem;
+  --s-9:  4rem;
+  --s-10: 5.5rem;
+  --s-11: 7rem;
+
+  /* Section rhythm, tightened on small screens by responsive.css */
+  --section-y: clamp(3.5rem, 6vw, 6.5rem);
+
+  /* --- Layout ------------------------------------------------------------ */
+  --wrap:       1220px;
+  --wrap-narrow: 780px;
+  --gutter:     clamp(1.25rem, 4vw, 2.5rem);
+  --nav-h:      74px;
+
+  /* --- Radii (small on purpose) ------------------------------------------ */
+  --r-1: 2px;
+  --r-2: 4px;
+  --r-3: 8px;
+  --r-pill: 999px;
+
+  /* --- Elevation (restrained) -------------------------------------------- */
+  --e-1: 0 1px 2px rgba(22, 24, 27, 0.05);
+  --e-2: 0 2px 6px rgba(22, 24, 27, 0.06), 0 1px 2px rgba(22, 24, 27, 0.04);
+  --e-3: 0 12px 32px rgba(22, 24, 27, 0.10), 0 2px 6px rgba(22, 24, 27, 0.05);
+  --e-nav: 0 1px 0 var(--line), 0 6px 20px rgba(22, 24, 27, 0.05);
+
+  /* --- Motion ------------------------------------------------------------ */
+  --ease:      cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-1: 140ms;
+  --dur-2: 240ms;
+  --dur-3: 420ms;
+  --dur-4: 700ms;
+
+  --z-nav: 100;
+  --z-drawer: 200;
+  --z-toast: 300;
+}
+
+/* Users who ask for less motion get none of it. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-1: 1ms;
+    --dur-2: 1ms;
+    --dur-3: 1ms;
+    --dur-4: 1ms;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "shiv-trading-india",
+  "version": "1.0.0",
+  "private": true,
+  "description": "B2B product catalogue website for Shiv Trading India Private Limited",
+  "scripts": {
+    "build": "node scripts/build-content.js",
+    "dev": "node scripts/build-content.js && npx --yes serve . -l 3000",
+    "serve": "npx --yes serve . -l 3000",
+    "placeholders": "node scripts/make-placeholders.js",
+    "logo": "node scripts/process-logo.js"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "pngjs": "^7.0.0"
+  }
+}

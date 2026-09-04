@@ -290,10 +290,26 @@ window.STI = window.STI || {};
    * category.html, which lists the brands stocked within it.
    */
   function renderProductsIndex() {
+    var p = STI.settingGroup('productsPage');
+
+    setText('pdEyebrow', p.eyebrow);
+    setText('pdHeading', p.heading);
+    setText('pdLead', p.lead);
+    setText('pdSectionHeading', p.sectionHeading);
+    setText('pdSectionText', p.sectionText);
+    setText('pdCtaHeading', p.ctaHeading);
+    setText('pdCtaText', p.ctaText);
+    setText('pdCtaPrimary', p.ctaPrimaryLabel);
+    setText('pdCtaSecondary', p.ctaSecondaryLabel);
+
     var grid = document.getElementById('categoriesIndexGrid');
     if (!grid) return;
 
     var categories = STI.categories(); // already sorted by displayOrder at build time
+
+    /* Computed, not CMS text -- a hardcoded "15 categories" would go stale
+       the moment a category is added or removed. */
+    setText('pdCategoryCount', UI.plural(categories.length, 'category', 'categories'));
 
     if (!categories.length) {
       grid.innerHTML = UI.emptyState(
@@ -308,6 +324,18 @@ window.STI = window.STI || {};
   }
 
   /* =========================================================== Contact === */
+
+  function renderContactPageText() {
+    var f = STI.settingGroup('forms');
+
+    setText('ctEyebrow', f.contactEyebrow);
+    setText('ctHeading', f.contactHeading);
+    setText('ctLead', f.contactLead);
+    setText('ctWhatsappNote', f.contactWhatsappNote);
+    setHtml('ctFormIntro', UI.inlineText(f.contactFormIntro));
+    setText('ctSubmitLabel', f.contactSubmitLabel);
+    setText('ctConsentText', f.contactConsentText);
+  }
 
   function bindContactForm() {
     var form = document.getElementById('contactForm');
@@ -343,6 +371,24 @@ window.STI = window.STI || {};
     wrapper.hidden = false;
   }
 
+  /* ===================================================== 404 / thank-you === */
+
+  function renderUtilityPage(which) {
+    var m = STI.settingGroup('miscPages');
+
+    if (which === '404') {
+      setText('nfTitle', m.notFoundTitle);
+      setText('nfText', m.notFoundText);
+      setText('nfPrimary', m.notFoundPrimaryLabel);
+      setText('nfSecondary', m.notFoundSecondaryLabel);
+    } else {
+      setText('tyTitle', m.thankYouTitle);
+      setText('tyText', m.thankYouText);
+      setText('tyPrimary', m.thankYouPrimaryLabel);
+      setText('tySecondary', m.thankYouSecondaryLabel);
+    }
+  }
+
   /* ============================================================== boot === */
 
   STI.load().then(function () {
@@ -352,8 +398,10 @@ window.STI = window.STI || {};
     if (page === 'products') renderProductsIndex();
     if (page === 'about') renderAbout();
     if (page === 'contact') {
+      renderContactPageText();
       bindContactForm();
       renderContactMap();
     }
+    if (page === '404' || page === 'thanks') renderUtilityPage(page);
   });
 })(window.STI);

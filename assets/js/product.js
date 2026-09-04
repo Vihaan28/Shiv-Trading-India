@@ -20,6 +20,8 @@ window.STI = window.STI || {};
   /* ---------------------------------------------------------- not found -- */
 
   function renderMissing() {
+    var cp = STI.settingGroup('cataloguePages');
+
     document.title = 'Product not found - Shiv Trading India';
 
     var robots = document.createElement('meta');
@@ -33,8 +35,8 @@ window.STI = window.STI || {};
     root.innerHTML =
       '<div class="wrap section">' +
         UI.emptyState(
-          'We could not find that product',
-          'It may have been renamed or withdrawn from the catalogue. Browse everything we stock, or send us the specification and we will source it.',
+          cp.productNotFoundTitle || 'We could not find that product',
+          cp.productNotFoundText || 'It may have been renamed or withdrawn from the catalogue. Browse everything we stock, or send us the specification and we will source it.',
           '<div class="center-actions" style="margin-top:0">' +
             '<a class="btn btn-primary" href="/products.html">View all products</a>' +
             '<a class="btn btn-secondary" href="/rfq.html">Send a requirement</a>' +
@@ -96,6 +98,16 @@ window.STI = window.STI || {};
       UI.absoluteUrl(UI.productUrl(product.slug))
     );
 
+    var chrome = STI.settingGroup('chrome');
+    var cp = STI.settingGroup('cataloguePages');
+    var addToQuoteLabel = chrome.addToQuoteDetail || 'Add to quote request';
+    var askWhatsappLabel = chrome.askWhatsappLabel || 'Ask on WhatsApp';
+    var contactUsLabel = chrome.contactUsLabel || 'Contact us';
+    var buyBoxNote = cp.productBuyBoxNote ||
+      'Add as many products as you need, then send one combined request. Quotations for metal products are issued against the rate on the day of enquiry.';
+    var discontinuedNote = cp.productDiscontinuedNote || 'This product has been discontinued.';
+    var discontinuedLinkText = cp.productDiscontinuedLinkText || 'Contact us and we will suggest a current alternative.';
+
     return (
       '<div class="buy-box">' +
         '<div class="buy-box__top">' +
@@ -116,16 +128,15 @@ window.STI = window.STI || {};
             '</div>' +
             '<div class="buy-box__actions">' +
               '<button type="button" class="btn btn-copper btn-lg btn-block" data-add-to-rfq="' + UI.attr(product.slug) + '">' +
-                'Add to quote request' +
+                UI.esc(addToQuoteLabel) +
               '</button>' +
               (wa
-                ? '<a class="btn btn-secondary btn-block" href="' + UI.attr(wa) + '" target="_blank" rel="noopener">Ask on WhatsApp</a>'
-                : '<a class="btn btn-secondary btn-block" href="/contact.html">Contact us</a>') +
+                ? '<a class="btn btn-secondary btn-block" href="' + UI.attr(wa) + '" target="_blank" rel="noopener">' + UI.esc(askWhatsappLabel) + '</a>'
+                : '<a class="btn btn-secondary btn-block" href="/contact.html">' + UI.esc(contactUsLabel) + '</a>') +
             '</div>' +
-            '<p class="buy-box__note">Add as many products as you need, then send one combined request. ' +
-              'Quotations for metal products are issued against the rate on the day of enquiry.</p>'
-          : '<p class="buy-box__note">This product has been discontinued. ' +
-              '<a class="inline-link" href="/contact.html">Contact us</a> and we will suggest a current alternative.</p>') +
+            '<p class="buy-box__note">' + UI.esc(buyBoxNote) + '</p>'
+          : '<p class="buy-box__note">' + UI.esc(discontinuedNote) + ' ' +
+              '<a class="inline-link" href="/contact.html">' + UI.esc(discontinuedLinkText) + '</a></p>') +
       '</div>'
     );
   }
@@ -134,6 +145,7 @@ window.STI = window.STI || {};
 
   function renderProduct(product) {
     var category = STI.categoryBySlug(product.category);
+    var cp = STI.settingGroup('cataloguePages');
 
     /* --- head ------------------------------------------------------------ */
     document.title = product.seoTitle;
@@ -191,7 +203,7 @@ window.STI = window.STI || {};
 
         '<div class="product-tabs">' +
           '<div class="prose">' +
-            '<h2>About this product</h2>' +
+            '<h2>' + UI.esc(cp.productAboutHeading || 'About this product') + '</h2>' +
             UI.paragraphs(product.description) +
             (product.body ? UI.markdown(product.body) : '') +
           '</div>' +
@@ -224,6 +236,12 @@ window.STI = window.STI || {};
     var section = document.getElementById('relatedSection');
     var grid = document.getElementById('relatedGrid');
     if (!section || !grid) return;
+
+    var cp = STI.settingGroup('cataloguePages');
+    var eyebrowEl = document.getElementById('prRelatedEyebrow');
+    var headingEl = document.getElementById('prRelatedHeading');
+    if (eyebrowEl && cp.productRelatedEyebrow) eyebrowEl.textContent = cp.productRelatedEyebrow;
+    if (headingEl && cp.productRelatedHeading) headingEl.textContent = cp.productRelatedHeading;
 
     var related = STI.productsIn(product.category).filter(function (p) {
       return p.slug !== product.slug;

@@ -524,8 +524,110 @@ whether Identity's configured **Site URL** (Netlify → Site configuration →
 Identity → Settings) actually matches where the site is really deployed —
 a mismatch there sends the token to a URL this fix was never loaded on.
 
+### Session 5 — Sitewide CMS text editability (Claude, same day)
+
+Client asked for full CMS control over "all headings, subheadings, texts,
+options, general details" on every page. Scoped and built as follows.
+
+**Scope decision (stated plainly, not asked as a blocking question):** made
+editable every heading, subheading, paragraph and button label a visitor
+reads, across all 10 pages, plus shared site-wide chrome (nav labels, footer
+headings, repeated buttons like "Add to quote"). **Deliberately left fixed:**
+`aria-label`/screen-reader-only text, form validation error messages, and
+generic filter-panel chrome ("Filter", "Reset", "Sort", "Featured first" /
+"Name A-Z" sort options). These carry accessibility/functional risk if
+mistyped and zero business value if reworded — leaving them fixed is a
+considered choice, not an oversight, and is worth revisiting only if asked.
+
+**No new CMS collection was needed.** `buildSettings()` in
+`scripts/build-content.js` already passes through *any* key found in a
+`content/settings/*.md` file verbatim — it was written generically from the
+start. So this was purely additive: new settings files + new `admin/config.yml`
+entries + new HTML ids + new JS to paint them.
+
+**Five new settings screens**, grouped thematically so the CMS doesn't become
+20+ scattered files an employee has to hunt through:
+
+| CMS label | File | Covers |
+|---|---|---|
+| Site-wide: Menu, Footer & Buttons | `content/settings/chrome.md` | Nav labels, footer headings/links, repeated buttons ("Add to quote", "Details", "Browse", "Ask on WhatsApp") |
+| Page Text: Products (Catalogue Index) | `content/settings/productsPage.md` | products.html |
+| Page Text: Category & Product Pages | `content/settings/cataloguePages.md` | Chrome around category.html and product.html (not the category/product content itself — that's still under Categories/Products) |
+| Page Text: Quote Request & Contact Forms | `content/settings/forms.md` | rfq.html + contact.html |
+| Page Text: Search, Not Found & Thank You | `content/settings/miscPages.md` | search.html, 404.html, thank-you.html |
+
+**Field naming gotcha, now fixed, worth remembering:** `buildSettings()` keys
+`data.json.settings` by **filename minus extension**, not by the CMS's
+internal `name:` field. The settings files must be named to exactly match
+what the JS calls `STI.settingGroup('...')` with — `productsPage.md`, not
+`products-page.md`. Got this wrong on the first pass (used hyphenated
+filenames with camelCase JS lookups), which silently no-op'd every field in
+those three files. If you add a new settings file, **the filename IS the key**
+— camelCase both, keep them identical, and verify with
+`node -e "console.log(require('./data.json').settings.yourKey)"` before
+assuming a field works.
+
+**`404.html` and `thank-you.html` didn't load `main.js` at all** before this
+session (they were originally static-only pages). Discovered when their new
+CMS text silently failed to paint with zero console errors — the giveaway that
+it's a missing script tag, not a broken settings key, is when a field
+resolves correctly in `data.json` but the page never even tries to use it.
+Both now load the full script stack and have a `renderUtilityPage()`
+controller in `main.js`.
+
+**One correctness fix distinct from the CMS work:** `products.html` had a
+hardcoded `"15 categories"` eyebrow. Left as static text, it would silently go
+stale the next time a category is added or removed. Changed to a computed
+`${categories.length} categories` in `renderProductsIndex()` instead of a CMS
+field — this one should never be editable text, because it isn't actually
+text, it's a fact about the data.
+
+**`contactFormIntro` needed an inline link inside otherwise-plain CMS text**
+("Use the quote request instead", where "quote request" links to `/rfq.html`).
+Solved by authoring it as `[quote request](/rfq.html)` and adding
+`UI.inlineText()` to `ui.js` — applies the same inline `[text](url)`/`**bold**`
+substitutions as `UI.markdown()` but without the block-level `<p>` wrapper
+`UI.markdown()` always emits, which would have nested invalidly inside the
+existing `<p id="ctFormIntro">`.
+
+**Icon-only cart button removed from the nav** (separate client request,
+same session): the header previously had both an icon-only cart-count badge
+*and* a "Request a quote" text button, both linking to `/rfq.html` — genuinely
+redundant. Removed the icon button; the text button's existing
+`(N)` count suffix (via `[data-cart-label]` in `rfq.js`) already conveyed the
+same information. The bump animation that used to pulse the icon badge on
+add-to-cart now pulses the `.nav-cta` button itself instead
+(`.nav-cta.is-bumped` in `components.css`) — repurposed, not deleted, so that
+feedback isn't lost.
+
+**Bugs fixed this session unrelated to the above, while touching adjacent
+code:**
+- `phoneAlt`'s "hide if blank" logic was hiding the *entire* Phone
+  `.contact-block` (including the working primary number) rather than just
+  the empty second line, since both `<a>` tags share one block and
+  `hideBlock()` climbs to the nearest `.contact-block` ancestor. Fixed in
+  `navigation.js` to hide only the specific `<a data-contact="phone-alt">`
+  element.
+- Netlify Identity invite links land on the site's **homepage** with an auth
+  token in the URL hash, not on `/admin/` — only `admin/index.html` had the
+  Identity widget loaded, so an invite link silently did nothing. Added the
+  same widget + an `on('login')` redirect to `/admin/` on `index.html`.
+- Email is no longer required on the RFQ and contact forms (phone remains the
+  required contact method) — `validate()` in `rfq.js` now checks email/tel
+  *format* whenever they're filled in, required or not, rather than only
+  validating fields carrying the `required` attribute.
+
+**Client-driven content changes on record:** phone is `+91 9650202197`, email
+is `stcshiv@gmail.com` (real Google Maps embed URL also added to
+`content/settings/contact.md`). WhatsApp number was **not** changed — still
+the placeholder `+91 98100 00000` — flag this to the client if not already
+addressed. `privacy-policy.html` was removed entirely per client request
+(along with every footer reference to it and to `/sitemap.xml`, though
+`sitemap.xml` itself and its `robots.txt` entry were kept — those are
+invisible crawler infrastructure, not a "website option" a visitor sees).
+
 ### Not done / next up
-- Replace placeholder phone, WhatsApp and email in the CMS.
+- Replace the placeholder WhatsApp number (phone and email are done — see Session 5).
 - Replace placeholder imagery with real photographs.
 - **Fill in technical specifications for all 37 products** — currently empty
   by design (see Session 3). This is the main remaining content gap.

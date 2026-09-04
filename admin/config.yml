@@ -427,3 +427,127 @@ collections:
             widget: text
             hint: One or two sentences describing the business. Used in the footer and by search engines.
           - { label: Years of experience, name: yearsOfExperience, widget: string, hint: 'Just the number, e.g. 25' }
+
+      # -----------------------------------------------------------------
+      # Everything below lets you rewrite the small headings, buttons and
+      # messages that appear around the website but aren't part of a
+      # specific product, category or page above. You will rarely need
+      # these -- they're here so nothing on the site requires a developer.
+      # -----------------------------------------------------------------
+
+      - name: chrome
+        label: 'Site-wide: Menu, Footer & Buttons'
+        file: content/settings/chrome.md
+        description: Text repeated on every page — the top menu, the footer, and buttons like "Add to quote" that appear on many product cards at once.
+        fields:
+          - { label: 'Top menu — "Home" link', name: navHome, widget: string }
+          - { label: 'Top menu — "About" link', name: navAbout, widget: string }
+          - { label: 'Top menu — "Products" link', name: navProducts, widget: string }
+          - { label: 'Top menu — "Contact" link', name: navContact, widget: string }
+          - { label: 'Top menu — "Search" link (mobile menu)', name: navSearch, widget: string }
+          - { label: 'Top menu — "Request a quote" link/button', name: navRequestQuote, widget: string }
+
+          - { label: 'Footer — "Explore" column heading', name: footerExploreHeading, widget: string }
+          - { label: 'Footer — "Categories" column heading', name: footerCategoriesHeading, widget: string }
+          - { label: 'Footer — "Get in touch" column heading', name: footerContactHeading, widget: string }
+          - { label: 'Footer — "All products" link', name: footerLinkAllProducts, widget: string }
+          - { label: 'Footer — "About us" link', name: footerLinkAbout, widget: string }
+          - { label: 'Footer — "Request a quote" link', name: footerLinkRfq, widget: string }
+          - { label: 'Footer — "Search" link', name: footerLinkSearch, widget: string }
+          - { label: 'Footer — "Contact" link', name: footerLinkContact, widget: string }
+
+          - { label: 'Button — "Add to quote" (on product cards)', name: addToQuoteCard, widget: string }
+          - { label: 'Button — "Add to quote request" (on a product page)', name: addToQuoteDetail, widget: string }
+          - { label: 'Button — "Details" (on product cards)', name: detailsLabel, widget: string }
+          - { label: 'Button — "Browse" (on category cards)', name: browseLabel, widget: string }
+          - { label: 'Button — "Ask on WhatsApp" (on a product page)', name: askWhatsappLabel, widget: string }
+          - { label: 'Button — "Contact us" (fallback when WhatsApp is not set up)', name: contactUsLabel, widget: string }
+
+      - name: productsPage
+        label: 'Page Text: Products (Catalogue Index)'
+        file: content/settings/productsPage.md
+        description: The text on the main Products page — the page that lists all your categories.
+        fields:
+          - { label: Small line above the heading, name: eyebrow, widget: string }
+          - { label: Page heading, name: heading, widget: string }
+          - { label: Page introduction, name: lead, widget: text }
+          - { label: Section heading, name: sectionHeading, widget: string }
+          - { label: Section text, name: sectionText, widget: text }
+          - { label: 'Bottom banner — heading', name: ctaHeading, widget: string }
+          - { label: 'Bottom banner — text', name: ctaText, widget: text }
+          - { label: 'Bottom banner — first button', name: ctaPrimaryLabel, widget: string }
+          - { label: 'Bottom banner — second button', name: ctaSecondaryLabel, widget: string }
+
+      - name: cataloguePages
+        label: 'Page Text: Category & Product Pages'
+        file: content/settings/cataloguePages.md
+        description: >-
+          Text shown around every category page (where customers pick a brand) and every
+          product page. This is separate from the category/product content itself —
+          edit a specific category or product under Categories / Products instead.
+        fields:
+          - { label: 'Category page — small line above the category name', name: categoryEyebrow, widget: string }
+          - { label: 'Category page — "Also from us" small line', name: categorySiblingsEyebrow, widget: string }
+          - { label: 'Category page — "Other categories" heading', name: categorySiblingsHeading, widget: string }
+          - { label: 'Category page — heading when no brands match the filters', name: categoryEmptyTitle, widget: string }
+          - { label: 'Category page — text when no brands match the filters', name: categoryEmptyText, widget: text }
+          - { label: 'Category page — heading when a category link is broken', name: categoryNotFoundTitle, widget: string }
+          - { label: 'Category page — text when a category link is broken', name: categoryNotFoundText, widget: text }
+
+          - { label: 'Product page — "About this product" heading', name: productAboutHeading, widget: string }
+          - { label: 'Product page — "Related" small line', name: productRelatedEyebrow, widget: string }
+          - { label: 'Product page — "You may also need" heading', name: productRelatedHeading, widget: string }
+          - { label: 'Product page — note under the quote-request button', name: productBuyBoxNote, widget: text }
+          - { label: 'Product page — message for a discontinued product', name: productDiscontinuedNote, widget: string }
+          - { label: 'Product page — link text for a discontinued product', name: productDiscontinuedLinkText, widget: string }
+          - { label: 'Product page — heading when a product link is broken', name: productNotFoundTitle, widget: string }
+          - { label: 'Product page — text when a product link is broken', name: productNotFoundText, widget: text }
+
+      - name: forms
+        label: 'Page Text: Quote Request & Contact Forms'
+        file: content/settings/forms.md
+        description: The headings, labels and messages on the Request a Quote page and the Contact page.
+        fields:
+          - { label: 'Quote page — small line above the heading', name: rfqEyebrow, widget: string }
+          - { label: 'Quote page — heading', name: rfqHeading, widget: string }
+          - { label: 'Quote page — introduction', name: rfqLead, widget: text }
+          - { label: 'Quote page — "Your selection" heading', name: rfqItemsHeading, widget: string }
+          - { label: 'Quote page — "Clear all" button', name: rfqClearAllLabel, widget: string }
+          - { label: 'Quote page — heading when the cart is empty', name: rfqEmptyTitle, widget: string }
+          - { label: 'Quote page — text when the cart is empty', name: rfqEmptyText, widget: text }
+          - { label: 'Quote page — button when the cart is empty', name: rfqEmptyButtonLabel, widget: string }
+          - { label: 'Quote page — "Your details" heading', name: rfqFormHeading, widget: string }
+          - { label: 'Quote page — line under "Your details"', name: rfqFormIntro, widget: string }
+          - { label: 'Quote page — submit button', name: rfqSubmitLabel, widget: string }
+          - { label: 'Quote page — consent line under the submit button', name: rfqConsentText, widget: text }
+
+          - { label: 'Contact page — small line above the heading', name: contactEyebrow, widget: string }
+          - { label: 'Contact page — heading', name: contactHeading, widget: string }
+          - { label: 'Contact page — introduction', name: contactLead, widget: text }
+          - { label: 'Contact page — note under the WhatsApp button', name: contactWhatsappNote, widget: string }
+          - { label: 'Contact page — "Send us a message" heading', name: contactFormHeading, widget: string }
+          - label: 'Contact page — line above the form'
+            name: contactFormIntro
+            widget: text
+            hint: 'You can link text by writing it as [link text](/rfq.html).'
+          - { label: 'Contact page — submit button', name: contactSubmitLabel, widget: string }
+          - { label: 'Contact page — consent line under the submit button', name: contactConsentText, widget: text }
+
+      - name: miscPages
+        label: 'Page Text: Search, Not Found & Thank You'
+        file: content/settings/miscPages.md
+        description: Text on the search page, the "page not found" page, and the page shown after a form is submitted.
+        fields:
+          - { label: 'Search page — heading (before a visitor types anything)', name: searchHeading, widget: string }
+          - { label: 'Search page — text under the heading', name: searchSummary, widget: string }
+          - { label: 'Search page — example text shown in the search box', name: searchPlaceholder, widget: string }
+
+          - { label: '"Page not found" — heading', name: notFoundTitle, widget: string }
+          - { label: '"Page not found" — text', name: notFoundText, widget: text }
+          - { label: '"Page not found" — first button', name: notFoundPrimaryLabel, widget: string }
+          - { label: '"Page not found" — second button', name: notFoundSecondaryLabel, widget: string }
+
+          - { label: '"Thank you" page — heading', name: thankYouTitle, widget: string }
+          - { label: '"Thank you" page — text', name: thankYouText, widget: text }
+          - { label: '"Thank you" page — first button', name: thankYouPrimaryLabel, widget: string }
+          - { label: '"Thank you" page — second button', name: thankYouSecondaryLabel, widget: string }

@@ -107,9 +107,10 @@ window.STI = window.STI || {};
     var visible = all.slice(0, state.shown);
 
     if (!all.length) {
+      var cp = STI.settingGroup('cataloguePages');
       grid.innerHTML = UI.emptyState(
-        'No brands match those filters',
-        'Try clearing a filter, or tell us what you need and we will source it for you.',
+        cp.categoryEmptyTitle || 'No brands match those filters',
+        cp.categoryEmptyText || 'Try clearing a filter, or tell us what you need and we will source it for you.',
         '<div class="center-actions" style="margin-top:0">' +
           '<button type="button" class="btn btn-secondary" id="emptyReset">Clear filters</button>' +
           '<a class="btn btn-primary" href="/rfq.html">Send a requirement</a>' +
@@ -292,14 +293,16 @@ window.STI = window.STI || {};
   function setupCategoryPage() {
     var category = STI.categoryBySlug(categorySlug);
 
+    var cp = STI.settingGroup('cataloguePages');
+
     if (!category) {
       var main = document.getElementById('categoryMain');
       if (main) {
         main.innerHTML =
           '<div class="wrap section">' +
             UI.emptyState(
-              'That category is not available',
-              'It may have been renamed or taken down. Browse all categories instead.',
+              cp.categoryNotFoundTitle || 'That category is not available',
+              cp.categoryNotFoundText || 'It may have been renamed or taken down. Browse all categories instead.',
               '<a class="btn btn-primary" href="/products.html">View all categories</a>'
             ) +
           '</div>';
@@ -322,6 +325,9 @@ window.STI = window.STI || {};
     setText('categoryName', category.name);
     setText('categoryDescription', category.description);
     setText('categoryCrumb', category.name);
+    setText('catEyebrow', cp.categoryEyebrow);
+    setText('catSiblingsEyebrow', cp.categorySiblingsEyebrow);
+    setText('catSiblingsHeading', cp.categorySiblingsHeading);
 
     var body = document.getElementById('categoryBody');
     if (body && category.body) {

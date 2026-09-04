@@ -61,11 +61,6 @@
         <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.6"/><path d="m13.5 13.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
 
-      <a class="icon-btn" href="/rfq.html" aria-label="Your quote request">
-        <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 3h9l3 3v11H4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12.5 3v4h4M7 11h6M7 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span class="cart-count" data-cart-count aria-hidden="true">0</span>
-      </a>
-
       <a class="btn btn-primary nav-cta" href="/rfq.html" data-cart-label>Request a quote</a>
 
       <button type="button" class="burger" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
@@ -116,11 +111,11 @@
   <section class="notfound">
     <div class="wrap wrap-narrow">
       <p class="notfound__code">Error 404</p>
-      <h1>We could not find that page</h1>
-      <p>The link may be out of date, or the page may have been moved. Try the catalogue, or search for what you need.</p>
+      <h1 id="nfTitle">We could not find that page</h1>
+      <p id="nfText">The link may be out of date, or the page may have been moved. Try the catalogue, or search for what you need.</p>
       <div class="center-actions">
-        <a class="btn btn-primary" href="/products.html">Browse products</a>
-        <a class="btn btn-secondary" href="/search.html">Search the site</a>
+        <a class="btn btn-primary" href="/products.html" id="nfPrimary">Browse products</a>
+        <a class="btn btn-secondary" href="/search.html" id="nfSecondary">Search the site</a>
       </div>
     </div>
   </section>
@@ -137,7 +132,7 @@
       </div>
 
       <div class="footer-col">
-        <h4>Explore</h4>
+        <h4 id="footerExploreH4">Explore</h4>
         <ul>
           <li><a href="/products.html">All products</a></li>
           <li><a href="/about.html">About us</a></li>
@@ -148,14 +143,14 @@
       </div>
 
       <div class="footer-col">
-        <h4>Categories</h4>
+        <h4 id="footerCategoriesH4">Categories</h4>
         <ul id="footerCategories">
           <li><a href="/products.html">Browse the catalogue</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Get in touch</h4>
+        <h4 id="footerContactH4">Get in touch</h4>
         <ul>
           <li><a href="tel:" data-contact="phone">+91 9650202197</a></li>
           <li><a href="mailto:" data-contact="email">stcshiv@gmail.com</a></li>
@@ -181,5 +176,6 @@
 <script src="/assets/js/animations.js"></script>
 <script src="/assets/js/rfq.js"></script>
 <script src="/assets/js/search.js"></script>
+<script src="/assets/js/main.js"></script>
 </body>
 </html>

@@ -137,6 +137,9 @@ window.STI = window.STI || {};
     var catName = STI.categoryName(product.category);
     var price = UI.priceHtml(product);
     var quotable = UI.isQuotable(product);
+    var chrome = STI.settingGroup('chrome');
+    var addToQuoteLabel = chrome.addToQuoteCard || 'Add to quote';
+    var detailsLabel = chrome.detailsLabel || 'Details';
 
     var flags = '';
     if (opts.showFeatured !== false && product.featured) {
@@ -164,9 +167,9 @@ window.STI = window.STI || {};
         '</div>' +
         '<div class="product-card__actions">' +
           (quotable
-            ? '<button type="button" class="btn btn-primary btn-sm" data-add-to-rfq="' + UI.attr(product.slug) + '">Add to quote</button>'
+            ? '<button type="button" class="btn btn-primary btn-sm" data-add-to-rfq="' + UI.attr(product.slug) + '">' + UI.esc(addToQuoteLabel) + '</button>'
             : '<span class="btn btn-secondary btn-sm" aria-disabled="true">Discontinued</span>') +
-          '<a class="btn btn-secondary btn-sm" href="' + UI.productUrl(product.slug) + '">Details</a>' +
+          '<a class="btn btn-secondary btn-sm" href="' + UI.productUrl(product.slug) + '">' + UI.esc(detailsLabel) + '</a>' +
         '</div>' +
       '</article>'
     );
@@ -174,13 +177,14 @@ window.STI = window.STI || {};
 
   UI.categoryCard = function (category) {
     var count = STI.countIn(category.slug);
+    var browseLabel = STI.setting('chrome', 'browseLabel', 'Browse');
     return (
       '<article class="category-card" data-reveal>' +
         '<img src="' + UI.attr(category.image) + '" alt="" loading="lazy" decoding="async" width="800" height="600">' +
         '<p class="category-card__count">' + count + (count === 1 ? ' product' : ' products') + '</p>' +
         '<h3><a href="' + UI.categoryUrl(category.slug) + '">' + UI.esc(category.name) + '</a></h3>' +
         '<p>' + UI.esc(category.description) + '</p>' +
-        '<span class="link-arrow">Browse</span>' +
+        '<span class="link-arrow">' + UI.esc(browseLabel) + '</span>' +
       '</article>'
     );
   };
@@ -350,6 +354,17 @@ window.STI = window.STI || {};
       .filter(Boolean)
       .map(function (p) { return '<p>' + UI.esc(p).replace(/\n/g, '<br>') + '</p>'; })
       .join('');
+  };
+
+  /**
+   * Renders one line of CMS text with inline `[text](url)` / `**bold**`
+   * formatting, without wrapping it in a block element. For dropping CMS copy
+   * into an element that already exists in the page (e.g. a `<p>` whose tag
+   * the CMS field shouldn't need to know about) -- unlike UI.markdown(), which
+   * always emits its own <p>/<h2>/<ul> wrapper and would nest invalidly here.
+   */
+  UI.inlineText = function (source) {
+    return inline(UI.esc(String(source || '')));
   };
 
   UI.setMeta = function (selector, attribute, value) {

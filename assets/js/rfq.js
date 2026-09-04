@@ -128,24 +128,17 @@ window.STI = window.STI || {};
 
   function paintBadges() {
     var count = Cart.count();
-    var badges = document.querySelectorAll('[data-cart-count]');
-    for (var i = 0; i < badges.length; i++) {
-      var b = badges[i];
-      b.textContent = count;
-      b.classList.toggle('is-visible', count > 0);
-    }
+    var base = STI.setting('chrome', 'navRequestQuote', 'Request a quote');
     var labels = document.querySelectorAll('[data-cart-label]');
     for (var j = 0; j < labels.length; j++) {
-      labels[j].textContent = count === 0
-        ? 'Request a quote'
-        : 'Request a quote (' + count + ')';
+      labels[j].textContent = count === 0 ? base : base + ' (' + count + ')';
     }
   }
 
   function bump() {
-    var badges = document.querySelectorAll('[data-cart-count]');
-    for (var i = 0; i < badges.length; i++) {
-      var b = badges[i];
+    var buttons = document.querySelectorAll('.nav-cta');
+    for (var i = 0; i < buttons.length; i++) {
+      var b = buttons[i];
       b.classList.remove('is-bumped');
       void b.offsetWidth; /* restart the animation */
       b.classList.add('is-bumped');
@@ -413,6 +406,23 @@ window.STI = window.STI || {};
     });
   }
 
+  /** Fixed page chrome around the cart -- everything except the live cart
+      summary line and item rows, which stay in renderRfqPage(). */
+  function renderRfqPageText() {
+    var f = STI.settingGroup('forms');
+    var ids = {
+      rqEyebrow: f.rfqEyebrow, rqHeading: f.rfqHeading, rqLead: f.rfqLead,
+      rfqItemsHeading: f.rfqItemsHeading, rfqClear: f.rfqClearAllLabel,
+      rqEmptyTitle: f.rfqEmptyTitle, rqEmptyText: f.rfqEmptyText, rqEmptyButton: f.rfqEmptyButtonLabel,
+      rfqFormHeading: f.rfqFormHeading, rqFormIntro: f.rfqFormIntro,
+      rqSubmitLabel: f.rfqSubmitLabel, rqConsentText: f.rfqConsentText,
+    };
+    Object.keys(ids).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && ids[id]) el.textContent = ids[id];
+    });
+  }
+
   /* ================================================================ boot == */
 
   STI.load().then(function () {
@@ -420,6 +430,7 @@ window.STI = window.STI || {};
     paintBadges();
 
     if (document.getElementById('rfqList')) {
+      renderRfqPageText();
       renderRfqPage();
       bindRfqPage();
       bindRfqForm();

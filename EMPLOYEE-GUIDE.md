@@ -384,6 +384,28 @@ and their **Show on the homepage** switch.
 
 ---
 
+## 15a. How to change text on every other page
+
+The Homepage is not the only page you can rewrite. Under **Website Settings**
+you will also find:
+
+| Section | What it changes |
+|---|---|
+| **Site-wide: Menu, Footer & Buttons** | The words in the top menu and footer, and buttons like "Add to quote" that appear on many pages at once |
+| **Page Text: Products (Catalogue Index)** | The main Products page — the page listing all your categories |
+| **Page Text: Category & Product Pages** | The small headings and messages around every category page and every product page (not the products themselves — edit those under **Products**) |
+| **Page Text: Quote Request & Contact Forms** | Everything on the Request a Quote page and the Contact page |
+| **Page Text: Search, Not Found & Thank You** | The search page, the "page not found" page, and the page shown after someone submits a form |
+
+Same rule as everywhere else: change it, click **Publish**, wait two minutes,
+hard-refresh. A field left blank falls back to the original wording rather
+than showing nothing.
+
+You will not need these often — they are here so that literally nothing on
+the website ever requires a developer, not because they need regular changes.
+
+---
+
 ## 16. How to change phone numbers
 
 Do this **once** and it updates everywhere on the website — footer, contact page,

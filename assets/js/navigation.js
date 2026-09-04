@@ -247,6 +247,59 @@ window.STI = window.STI || {};
       .join('');
   }
 
+  /* -------------------------------------------- CMS-driven nav/footer text -- */
+
+  /** Sets the text of every link with this href, in both the top menu and the
+      mobile drawer (a link can legitimately appear in both, or just one). */
+  function setLinkText(href, text) {
+    if (!text) return;
+    var links = document.querySelectorAll(
+      '.nav-links a[href="' + href + '"], .drawer-nav a[href="' + href + '"], .footer-col a[href="' + href + '"]'
+    );
+    for (var i = 0; i < links.length; i++) links[i].textContent = text;
+  }
+
+  function setTextById(id, text) {
+    var el = document.getElementById(id);
+    if (el && text) el.textContent = text;
+  }
+
+  /**
+   * Paints the top menu, mobile drawer and footer chrome from Website
+   * Settings -> "Site-wide: Menu, Footer & Buttons". This is the one CMS
+   * screen that touches every page at once, since the header/footer markup is
+   * duplicated into each HTML file rather than templated.
+   */
+  function paintChrome() {
+    var c = STI.settingGroup('chrome');
+
+    setLinkText('/', c.navHome);
+    setLinkText('/about.html', c.navAbout);
+    setLinkText('/products.html', c.navProducts);
+    setLinkText('/contact.html', c.navContact);
+    setLinkText('/search.html', c.navSearch);
+    setLinkText('/rfq.html', c.navRequestQuote);
+
+    setTextById('footerExploreH4', c.footerExploreHeading);
+    setTextById('footerCategoriesH4', c.footerCategoriesHeading);
+    setTextById('footerContactH4', c.footerContactHeading);
+
+    /* The footer's product/about/rfq/search/contact links share hrefs with
+       the nav and drawer, so setLinkText already repainted them above using
+       the nav labels. Only the footer's own (differently-worded) labels need
+       a second, more specific pass. */
+    each('.footer-col a[href="/products.html"]', function (el) { if (c.footerLinkAllProducts) el.textContent = c.footerLinkAllProducts; });
+    each('.footer-col a[href="/about.html"]', function (el) { if (c.footerLinkAbout) el.textContent = c.footerLinkAbout; });
+    each('.footer-col a[href="/rfq.html"]', function (el) { if (c.footerLinkRfq) el.textContent = c.footerLinkRfq; });
+    each('.footer-col a[href="/search.html"]', function (el) { if (c.footerLinkSearch) el.textContent = c.footerLinkSearch; });
+    each('.footer-col a[href="/contact.html"]', function (el) { if (c.footerLinkContact) el.textContent = c.footerLinkContact; });
+
+    /* The "Request a quote" nav button also carries a live cart count on top
+       of this base label, so it is repainted by rfq.js's own paintBadges()
+       (called from its own STI.load().then(), same as here) rather than set
+       directly in this function. */
+  }
+
   /* ---------------------------------------------------------- footer year -- */
 
   each('[data-year]', function (el) {
@@ -258,5 +311,6 @@ window.STI = window.STI || {};
   STI.load().then(function () {
     paintContactDetails();
     paintFooterCategories();
+    paintChrome();
   });
 })(window.STI);

@@ -61,11 +61,6 @@
         <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.6"/><path d="m13.5 13.5 3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
 
-      <a class="icon-btn" href="/rfq.html" aria-label="Your quote request">
-        <svg width="19" height="19" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 3h9l3 3v11H4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12.5 3v4h4M7 11h6M7 14h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span class="cart-count" data-cart-count aria-hidden="true">0</span>
-      </a>
-
       <a class="btn btn-primary nav-cta" href="/rfq.html" data-cart-label>Request a quote</a>
 
       <button type="button" class="burger" id="navToggle" aria-expanded="false" aria-controls="navDrawer" aria-label="Open menu">
@@ -119,9 +114,9 @@
         <li><a href="/">Home</a></li>
         <li><span aria-current="page">Request a quote</span></li>
       </ol>
-      <p class="eyebrow">Quotation request</p>
-      <h1>Request a quote</h1>
-      <p class="page-header__lead">Add as many products as you need, set the quantities, and send it as a single enquiry. We will reply with availability and pricing.</p>
+      <p class="eyebrow" id="rqEyebrow">Quotation request</p>
+      <h1 id="rqHeading">Request a quote</h1>
+      <p class="page-header__lead" id="rqLead">Add as many products as you need, set the quantities, and send it as a single enquiry. We will reply with availability and pricing.</p>
     </div>
   </section>
 
@@ -141,16 +136,16 @@
 
         <div id="rfqEmpty" hidden>
           <div class="empty-state">
-            <h3>No products selected yet</h3>
-            <p>Browse the catalogue and use “Add to quote” on any product. You can still send a general requirement using the form.</p>
-            <a class="btn btn-primary" href="/products.html">Browse products</a>
+            <h3 id="rqEmptyTitle">No products selected yet</h3>
+            <p id="rqEmptyText">Browse the catalogue and use “Add to quote” on any product. You can still send a general requirement using the form.</p>
+            <a class="btn btn-primary" href="/products.html" id="rqEmptyButton">Browse products</a>
           </div>
         </div>
       </section>
 
       <section class="rfq-form-card" aria-labelledby="rfqFormHeading">
         <h2 id="rfqFormHeading">Your details</h2>
-        <p>We reply to trade enquiries during business hours.</p>
+        <p id="rqFormIntro">We reply to trade enquiries during business hours.</p>
 
         <form id="rfqForm" name="rfq" method="POST" data-netlify="true" netlify-honeypot="company-website" action="/thank-you.html" novalidate>
           <input type="hidden" name="form-name" value="rfq">
@@ -200,9 +195,9 @@
 
           <div class="form-foot">
             <p class="form-status" data-form-status role="alert"></p>
-            <button type="submit" class="btn btn-copper btn-lg btn-block">Send quote request</button>
+            <button type="submit" class="btn btn-copper btn-lg btn-block" id="rqSubmitLabel">Send quote request</button>
             <p class="form-consent">
-              <span>By sending this you agree that we may contact you about this enquiry.</span>
+              <span id="rqConsentText">By sending this you agree that we may contact you about this enquiry.</span>
             </p>
           </div>
         </form>
@@ -223,7 +218,7 @@
       </div>
 
       <div class="footer-col">
-        <h4>Explore</h4>
+        <h4 id="footerExploreH4">Explore</h4>
         <ul>
           <li><a href="/products.html">All products</a></li>
           <li><a href="/about.html">About us</a></li>
@@ -234,14 +229,14 @@
       </div>
 
       <div class="footer-col">
-        <h4>Categories</h4>
+        <h4 id="footerCategoriesH4">Categories</h4>
         <ul id="footerCategories">
           <li><a href="/products.html">Browse the catalogue</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Get in touch</h4>
+        <h4 id="footerContactH4">Get in touch</h4>
         <ul>
           <li><a href="tel:" data-contact="phone">+91 9650202197</a></li>
           <li><a href="mailto:" data-contact="email">stcshiv@gmail.com</a></li>

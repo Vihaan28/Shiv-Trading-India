@@ -51,8 +51,9 @@ window.STI = window.STI || {};
     }
 
     if (!q) {
-      if (heading) heading.textContent = 'Search the catalogue';
-      if (summary) summary.textContent = 'Search by product name, material, thickness or thermal class.';
+      var m = STI.settingGroup('miscPages');
+      if (heading) heading.textContent = m.searchHeading || 'Search the catalogue';
+      if (summary) summary.textContent = m.searchSummary || 'Search by product name, material, thickness or thermal class.';
       results.innerHTML = '';
       return;
     }
@@ -138,7 +139,11 @@ window.STI = window.STI || {};
 
   STI.load().then(function () {
     var q = currentQuery();
-    if (input) input.value = q;
+    if (input) {
+      input.value = q;
+      var placeholder = STI.setting('miscPages', 'searchPlaceholder', '');
+      if (placeholder) input.placeholder = placeholder;
+    }
 
     /* Offer real category names as starting points rather than invented terms. */
     if (suggestions) {

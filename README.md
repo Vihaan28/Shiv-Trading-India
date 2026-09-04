@@ -91,9 +91,9 @@ Remember to re-comment `local_backend` before pushing.
 ```
 index.html               Homepage
 about.html               About page
-products.html            Full catalogue with filters
+products.html            All 15 categories, as cards
 product.html             ONE template that serves every product
-category.html            ONE template that serves every category
+category.html            ONE template that serves every category (lists the brands stocked in it)
 rfq.html                 Multi-product quote request
 contact.html             Contact details and form
 search.html              Site search

@@ -80,6 +80,7 @@ or `js-yaml` failing to install.
   "slug": "enamelled-copper-winding-wire",
   "name": "Enamelled Copper Winding Wire",
   "category": "copper-winding-wires",
+  "brand": "BIC",                // optional; shown on the product page only
   "shortDescription": "…",       // product card, meta description fallback
   "description": "…",            // product page body
   "body": "…",                   // optional extra Markdown
@@ -147,9 +148,9 @@ One template serves each dynamic page type. Netlify rewrites give them real URLs
 | URL | Serves |
 |---|---|
 | `/` | index.html |
-| `/products.html` | Full catalogue |
-| `/product/<slug>` | product.html |
-| `/category/<slug>` | category.html |
+| `/products.html` | All categories, as cards |
+| `/category/<slug>` | category.html — the brands stocked in that category |
+| `/product/<slug>` | product.html — one brand's product detail |
 | `/rfq.html` | Quote request (noindex) |
 | `/search.html` | Search (noindex) |
 | `/thank-you.html` | Post-submission (noindex) |
@@ -188,10 +189,10 @@ ui.js            STI.ui.*  — ALL shared rendering
 navigation.js    header, drawer, search panel, CMS contact details
 animations.js    STI.reveal(), hero parallax
 rfq.js           STI.cart.*, RFQ page, form submission
-catalog.js       products.html and category.html
+catalog.js       category.html only (search/sort/availability within one category)
 product.js       product.html
 search.js        search.html and the header search form
-main.js          homepage, about, contact; Organization JSON-LD
+main.js          homepage, products index, about, contact; Organization JSON-LD
 ```
 
 Load order on every page:

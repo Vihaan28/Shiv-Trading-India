@@ -399,9 +399,9 @@ Template rules that catch people out:
 - **Rotate the token** if a developer with access leaves.
 - **Do not log message bodies** in production — they contain customer data. Log
   identifiers and status codes.
-- **Update the privacy policy** before going live. Sending customer data to Meta
-  is a new processing purpose and a new third-party processor, and must be
-  disclosed.
+- **Disclose this to customers** before going live. Sending their data to Meta
+  is a new processing purpose and a new third-party processor, and needs to be
+  covered wherever the business currently states how customer data is handled.
 - **Rate limits:** the Cloud API throttles per number. Batch or queue if you ever
   send to many recipients at once.
 

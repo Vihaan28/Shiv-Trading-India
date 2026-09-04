@@ -299,7 +299,6 @@ having been changed.
 
 ## Annually
 - [ ] Confirm the domain auto-renew is on and the card on file is valid
-- [ ] Review the privacy policy
 - [ ] Review prices and availability across the catalogue
 
 ---

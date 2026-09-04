@@ -97,7 +97,6 @@ category.html            ONE template that serves every category (lists the bran
 rfq.html                 Multi-product quote request
 contact.html             Contact details and form
 search.html              Site search
-privacy-policy.html      Privacy policy
 thank-you.html           Shown after a form is sent
 404.html                 Not found
 
@@ -444,7 +443,6 @@ name and short description are used, which is adequate but generic.
 - [ ] Replace the placeholder product images with real photographs
 - [ ] Check the eleven sample products — descriptions and specifications were
       drafted as examples and need a subject-matter review
-- [ ] Have the privacy policy reviewed
 - [ ] Set Netlify Identity registration to **Invite only**
 - [ ] Turn on email notifications for both forms
 - [ ] Submit the sitemap to Google Search Console

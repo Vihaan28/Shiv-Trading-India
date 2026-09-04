@@ -351,18 +351,25 @@ window.STI = window.STI || {};
       });
   };
 
+  /**
+   * Validates required fields, plus the *format* of email/tel fields whenever
+   * they're filled in -- even if optional. Email is not required on either
+   * form (phone is the mandatory contact method), but a customer who does
+   * type one still deserves to be told if it's malformed.
+   */
   function validate(form) {
     var ok = true;
-    var fields = form.querySelectorAll('[required]');
+    var fields = form.querySelectorAll('[required], input[type="email"], input[type="tel"]');
 
     for (var i = 0; i < fields.length; i++) {
       var f = fields[i];
       var wrap = f.closest('.field');
       var msg = wrap ? wrap.querySelector('.error-text') : null;
       var problem = '';
+      var empty = !f.value.trim();
 
-      if (!f.value.trim()) {
-        problem = 'This field is required.';
+      if (empty) {
+        if (f.hasAttribute('required')) problem = 'This field is required.';
       } else if (f.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.value.trim())) {
         problem = 'Enter a valid email address.';
       } else if (f.type === 'tel' && f.value.replace(/\D/g, '').length < 8) {

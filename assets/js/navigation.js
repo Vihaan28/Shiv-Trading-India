@@ -168,7 +168,11 @@ window.STI = window.STI || {};
     });
 
     each('[data-contact="phone-alt"]', function (el) {
-      if (!phoneAlt) { hideBlock(el); return; }
+      /* This shares a .contact-block with the primary phone number, so a
+         missing second number must only hide this one line -- hideBlock()
+         would take the primary number down with it. */
+      if (!phoneAlt) { el.hidden = true; return; }
+      el.hidden = false;
       el.textContent = phoneAlt;
       if (el.tagName === 'A') el.href = 'tel:' + phoneAlt.replace(/[^\d+]/g, '');
     });

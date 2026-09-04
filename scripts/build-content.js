@@ -312,7 +312,6 @@ function buildSitemap(products, categories) {
     ['/contact.html', '0.7'],
     ['/rfq.html', '0.6'],
     ['/search.html', '0.3'],
-    ['/privacy-policy.html', '0.2'],
   ];
 
   const urls = [
@@ -333,7 +332,10 @@ function buildSitemap(products, categories) {
     )
     .join('\n');
 
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`;
+  return {
+    xml: `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`,
+    count: urls.length,
+  };
 }
 
 /* --------------------------------------------------------------------- main */
@@ -360,11 +362,13 @@ function main() {
     settings,
   };
 
+  const sitemap = buildSitemap(products, categories);
+
   fs.writeFileSync(path.join(ROOT, 'data.json'), JSON.stringify(data, null, 2) + '\n', 'utf8');
-  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(products, categories), 'utf8');
+  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap.xml, 'utf8');
 
   console.log(`  data.json     ${products.length} products, ${categories.length} categories, ${Object.keys(settings).length} settings files`);
-  console.log(`  sitemap.xml   ${products.length + categories.length + 7} URLs`);
+  console.log(`  sitemap.xml   ${sitemap.count} URLs`);
 
   if (warnings.length) {
     console.log(`\n  Finished with ${warnings.length} warning(s). The site will still deploy.`);

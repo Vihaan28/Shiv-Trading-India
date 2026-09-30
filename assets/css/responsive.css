@@ -160,6 +160,11 @@
   .toast-region { bottom: calc(var(--s-4) + 60px); }
 
   .gallery__thumb { width: 60px; }
+
+  /* Keeps the search + menu buttons comfortably clear of the brand block
+     on narrow phones instead of relying on truncation alone. */
+  .brand-sub { display: none; }
+  .brand-mark { height: 28px; }
 }
 
 /* ---------------------------------------------- Coarse pointer niceties --- */

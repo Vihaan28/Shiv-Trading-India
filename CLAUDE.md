@@ -626,12 +626,79 @@ addressed. `privacy-policy.html` was removed entirely per client request
 `sitemap.xml` itself and its `robots.txt` entry were kept — those are
 invisible crawler infrastructure, not a "website option" a visitor sees).
 
+### Session 6 — Mobile nav fix, legal pages restored, security pass (Claude, 2026-09-30)
+
+**Mobile navbar bug (menu button inaccessible after the earlier scroll fix).**
+Root cause: `.brand { flex: none; }` in `components.css` never let the
+logo/company-name block shrink. On phones the brand block plus the search and
+menu buttons didn't fit in the viewport width, so the row overflowed — and the
+"fix" applied in an earlier session (`overflow-x: hidden` on `html`/`body` in
+`main.css`) just clipped that overflow instead of preventing it, pushing the
+burger button out of the visible/clickable area. Real fix: `.brand` is now
+`flex: 1 1 auto; min-width: 0;` with `text-overflow: ellipsis` truncation on
+`.brand-name`/`.brand-sub`, while `.nav-actions` keeps `flex: none` (unchanged)
+so the search and menu buttons are never the part that gets squeezed. Added a
+small mobile-only tightening (`.brand-sub` hidden, logo height reduced) under
+560px in `responsive.css` for extra headroom on the smallest phones. The
+`overflow-x: hidden` safety net on `html`/`body` was left in place — it's now
+harmless since nothing overflows, but removing it wasn't the actual fix and
+wasn't necessary.
+
+**`privacy-policy.html` and `terms-conditions.html` restored/added.** The
+privacy policy had been deliberately removed in Session 5 per client request;
+the client has now asked for both pages back, linked from the footer.
+Rebuilt both as static HTML (same pattern as `404.html`/`about.html`: current
+header/drawer/footer markup, `data-page="legal"`, the existing `.legal .prose`
+CSS that had survived in `pages.css` from before). Content is **not**
+CMS-driven — these are long-form legal text, not short editable copy, so they
+follow the same "written directly in HTML" approach the original
+privacy-policy.html used. Covers what the client specified (data collected,
+why, where it goes, retention, who has access, access/correction/deletion
+rights, contact) and (terms) website usage, IP, product info accuracy,
+availability, enquiries-vs-orders, quotation confirmation, liability, external
+links, site availability, contact. **Flag to client: still a starting draft,
+not legal advice — needs review against the Digital Personal Data Protection
+Act, 2023 before launch, same caveat as the original draft carried.**
+Both pages added to `robots`-crawlable static routes in
+`scripts/build-content.js`'s `buildSitemap()` (`staticPages` array) and to
+every page's footer (`footer-bottom` now has a `<ul>` of Privacy
+policy / Terms & conditions links) — done with a scripted find/replace across
+all 10 existing HTML files since the footer markup was byte-identical in each.
+
+**Security/liability review — no code vulnerabilities found.** Checked for:
+hardcoded secrets/API keys/tokens (none — auth is Netlify Identity +
+Git Gateway, which holds no credentials in this repo), unescaped CMS content
+reaching `innerHTML` (audited every `innerHTML` call site — all CMS-sourced
+text goes through `UI.esc()`/`UI.markdown()`/`UI.paragraphs()`/`UI.inlineText()`
+first; the one non-escaped interpolation, cart `quantity` in `rfq.js`, is
+always `Number()`-coerced before storage so it can't carry a string payload),
+`target="_blank"` links missing `rel="noopener"` (none found — all already
+correct), and open-redirect / reflected-XSS on the search page's `?q=` param
+(uses `textContent`, not `innerHTML` — safe). `admin/config.yml` uses
+`git-gateway` (no credentials in the repo) with `local_backend` commented out.
+**Did not add a Content-Security-Policy header** — the site has several
+legitimate inline `style="..."` attributes and index.html's Netlify Identity
+redirect script, plus the admin CMS needs `unpkg.com` and
+`identity.netlify.com`; a CSP tight enough to matter risked silently breaking
+employee login, which is explicitly the highest-priority thing on this site to
+not break, and it couldn't be tested against a live Netlify deploy from here.
+Recommend revisiting with a real deploy to test against.
+**Login/password hardening:** there is no custom auth code to harden — login
+is entirely Netlify Identity + Git Gateway, so the only actual control is the
+Netlify dashboard setting **Identity → Registration → Invite only**, which
+CLAUDE.md already calls out but which is outside this repo and worth
+double-checking is still set.
+
 ### Not done / next up
 - Replace the placeholder WhatsApp number (phone and email are done — see Session 5).
 - Replace placeholder imagery with real photographs.
 - **Fill in technical specifications for all 37 products** — currently empty
   by design (see Session 3). This is the main remaining content gap.
-- Legal review of the privacy policy.
+- Legal review of the privacy policy and terms & conditions (see Session 6) —
+  both are plain-language drafts, not legal advice.
+- Confirm in the Netlify dashboard that Identity → Registration is set to
+  **Invite only** (see Session 6) — this can't be verified or changed from
+  the codebase.
 - Consider prerendering product pages at build time if Google's JS rendering
   proves too slow to index the catalogue (the architecture supports it —
   `build-content.js` already has every product in memory).

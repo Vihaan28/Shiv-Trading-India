@@ -312,6 +312,8 @@ function buildSitemap(products, categories) {
     ['/contact.html', '0.7'],
     ['/rfq.html', '0.6'],
     ['/search.html', '0.3'],
+    ['/privacy-policy.html', '0.2'],
+    ['/terms-conditions.html', '0.2'],
   ];
 
   const urls = [

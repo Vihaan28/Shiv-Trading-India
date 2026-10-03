@@ -94,6 +94,8 @@
 @media (max-width: 760px) {
   :root { --section-y: 3.25rem; }
 
+  .brand-text { display: none; }
+
   .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--s-7) var(--s-5); }
   .footer-brand { grid-column: 1 / -1; }
 
@@ -163,7 +165,6 @@
 
   /* Keeps the search + menu buttons comfortably clear of the brand block
      on narrow phones instead of relying on truncation alone. */
-  .brand-sub { display: none; }
   .brand-mark { height: 28px; }
 }
 

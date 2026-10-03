@@ -212,7 +212,7 @@ window.STI = window.STI || {};
   }
 
   function defaultWaMessage() {
-    return 'Hello Shiv Trading India, I would like to enquire about your products.';
+    return 'Hello Shiv Trading India, I would like to enquire about some of your products.';
   }
 
   function each(selector, fn) {

@@ -1,8 +1,8 @@
 ---
-phone: "+91 9650202197"
+phone: +91 9650202197
 phoneAlt: ""
 email: stcshiv@gmail.com
-whatsapp: "+91 98100 00000"
+whatsapp: +91 9650202197
 addressLine1: Bhagirath Palace
 addressLine2: Chandni Chowk
 city: New Delhi

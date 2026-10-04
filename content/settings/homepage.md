@@ -56,7 +56,7 @@ industries:
       manufacturers.
 whyHeading: Why buyers keep coming back
 whyItems:
-  - title: Twenty-five years of range knowledge
+  - title: Fourty-five years of range knowledge
     description: We have handled these materials long enough to know which grade
       suits which job, and to flag it when a specification looks wrong.
   - title: A genuinely broad shelf

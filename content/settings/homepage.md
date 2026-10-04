@@ -32,7 +32,7 @@ aboutText: >-
 
 
   Fourty-five years of working with transformer manufacturers, rewinding shops and equipment makers means we can usually tell from a short conversation which grade and thermal class a job actually needs.
-aboutImage: /assets/images/placeholders/about.svg
+aboutImage: /assets/images/uploads/image-11-.jpeg
 industriesHeading: Who we supply
 industriesSubheading: The workshops and manufacturers that use these materials every day.
 industries:

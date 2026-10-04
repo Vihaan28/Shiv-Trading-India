@@ -11,7 +11,7 @@ introText: >-
 
 
   We are a trading and supply business, not a manufacturer. What we bring is range, availability and specification knowledge: we hold the materials that transformer builders, motor manufacturers and rewinding workshops need, and we know enough about them to help you order the right thing the first time.
-introImage: /assets/images/placeholders/about.svg
+introImage: /assets/images/uploads/image-11-.jpeg
 supplyHeading: What we supply
 supplyText: "Our range covers both sides of a winding: the conductor and the
   insulation around it."

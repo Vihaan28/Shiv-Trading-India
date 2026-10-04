@@ -5,21 +5,23 @@ category: insulating-varnish
 brand: Jyoti
 shortDescription: Jyoti insulating varnish, stocked for industrial buyers.
 description: >-
-  Jyoti insulating varnish is available to order through Shiv Trading India. Share the specification and quantity you need and we will confirm availability and price.
+  Jyoti insulating varnish is available to order through Shiv Trading India.
+  Share the specification and quantity you need and we will confirm availability
+  and price.
 
-  
+
 
   Detailed technical specifications for this listing will be added shortly.
 priceType: price-on-request
 price: ""
 priceUnit: per litre
-primaryImage: /assets/images/placeholders/cat-insulating-varnish.svg
+primaryImage: /assets/images/uploads/product-jpeg-9-.png
 images:
-  - /assets/images/placeholders/cat-insulating-varnish.svg
+  - /assets/images/uploads/high-gloss-acrylic-jyoti-enterprises-jyoti-111-fd-golden-fast-drying-insulating-varnish-for-metal-pa.jpg
 specifications: []
 availability: on-request
+published: true
 featured: false
 showOnHomepage: false
-published: true
 displayOrder: 1
 ---

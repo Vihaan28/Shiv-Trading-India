@@ -31,7 +31,7 @@ aboutText: >-
   to you without a long chain of intermediaries.
 
 
-  Twenty-five years of working with transformer manufacturers, rewinding shops and equipment makers means we can usually tell from a short conversation which grade and thermal class a job actually needs.
+  Fourty-five years of working with transformer manufacturers, rewinding shops and equipment makers means we can usually tell from a short conversation which grade and thermal class a job actually needs.
 aboutImage: /assets/images/placeholders/about.svg
 industriesHeading: Who we supply
 industriesSubheading: The workshops and manufacturers that use these materials every day.

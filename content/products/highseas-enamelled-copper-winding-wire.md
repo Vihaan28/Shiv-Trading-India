@@ -15,7 +15,7 @@ description: >-
 priceType: price-on-request
 price: ""
 priceUnit: per kg
-primaryImage: /assets/images/uploads/843fe796-a803-4365-a4a5-b227e69ef89b.jpeg
+primaryImage: ""
 images:
   - /assets/images/placeholders/cat-enamelled-copper-winding-wire.svg
 specifications: []

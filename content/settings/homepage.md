@@ -10,7 +10,7 @@ heroPrimaryCtaLink: /products.html
 heroSecondaryCtaText: Request a Quote
 heroSecondaryCtaLink: /rfq.html
 trustItems:
-  - value: 25+
+  - value: 45+
     label: Years in the trade
   - value: Delhi
     label: Bhagirath Palace, Chandni Chowk

@@ -26,11 +26,15 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const yaml = require('js-yaml');
+const sharp = require('sharp');
 
 const ROOT = path.resolve(__dirname, '..');
 const CONTENT = path.join(ROOT, 'content');
 const SITE_URL = 'https://www.shivtradingindia.com';
+const UPLOADS = path.join(ROOT, 'assets', 'images', 'uploads');
+const OPTIMIZED_IMAGES = path.join(ROOT, 'assets', 'images', 'optimized');
 
 /* ------------------------------------------------------------------ helpers */
 
@@ -120,11 +124,50 @@ function pick(data, key, groups) {
 }
 
 /** Ensure an image path is site-absolute so it resolves from any page depth. */
-function imagePath(value) {
+function imagePath(value, optimizedImages) {
   const v = str(value);
   if (!v) return '';
   if (/^(https?:)?\/\//i.test(v) || v.startsWith('data:')) return v;
-  return v.startsWith('/') ? v : '/' + v;
+  const normalized = v.startsWith('/') ? v : '/' + v;
+  return optimizedImages && optimizedImages.get(normalized) || normalized;
+}
+
+/** Create smaller, content-addressed display files while retaining CMS originals. */
+async function optimizeUploadedImages(referencedImages) {
+  const optimizedImages = new Map();
+  fs.rmSync(OPTIMIZED_IMAGES, { recursive: true, force: true });
+  fs.mkdirSync(OPTIMIZED_IMAGES, { recursive: true });
+
+  const publicPaths = [...new Set(referencedImages)]
+    .filter((value) => value.startsWith('/assets/images/uploads/'));
+
+  for (const publicPath of publicPaths) {
+    const sourcePath = path.resolve(ROOT, `.${publicPath}`);
+    const relativePath = path.relative(UPLOADS, sourcePath);
+    if (!relativePath || relativePath.startsWith('..') || path.isAbsolute(relativePath)) continue;
+    const filename = path.basename(sourcePath);
+    if (!/\.(avif|jpe?g|png|tiff?|webp)$/i.test(filename)) continue;
+
+    try {
+      if (!fs.statSync(sourcePath).isFile()) continue;
+      const source = fs.readFileSync(sourcePath);
+      const webp = await sharp(source)
+        .rotate()
+        .resize(1200, 1200, { fit: 'inside', withoutEnlargement: true })
+        .webp({ quality: 82, effort: 4 })
+        .toBuffer();
+
+      if (webp.length >= source.length) continue;
+
+      const hash = crypto.createHash('sha256').update(webp).digest('hex').slice(0, 16);
+      fs.writeFileSync(path.join(OPTIMIZED_IMAGES, `${hash}.webp`), webp);
+      optimizedImages.set(publicPath, `/assets/images/optimized/${hash}.webp`);
+    } catch (err) {
+      warn(`Could not optimize image "${filename}" (${err.message}) - using the original.`);
+    }
+  }
+
+  return optimizedImages;
 }
 
 const PRICE_TYPES = ['fixed', 'starting-from', 'price-on-request', 'hidden'];
@@ -135,7 +178,7 @@ const PLACEHOLDER_CATEGORY = '/assets/images/placeholders/category.svg';
 
 /* ----------------------------------------------------------------- products */
 
-function buildProducts() {
+function buildProducts(optimizedImages) {
   const files = readFolder(path.join(CONTENT, 'products'));
   const products = [];
   const seen = new Set();
@@ -182,10 +225,10 @@ function buildProducts() {
       priceType = 'price-on-request';
     }
 
-    const primaryImage = imagePath(d.primaryImage) || PLACEHOLDER_PRODUCT;
+    const primaryImage = imagePath(d.primaryImage, optimizedImages) || PLACEHOLDER_PRODUCT;
 
     // Gallery = primary image first, then extras, de-duplicated.
-    const extra = Array.isArray(d.images) ? d.images.map(imagePath).filter(Boolean) : [];
+    const extra = Array.isArray(d.images) ? d.images.map((image) => imagePath(image, optimizedImages)).filter(Boolean) : [];
     const images = [primaryImage, ...extra].filter((v, i, a) => a.indexOf(v) === i);
 
     const specifications = (Array.isArray(d.specifications) ? d.specifications : [])
@@ -223,7 +266,7 @@ function buildProducts() {
 
 /* --------------------------------------------------------------- categories */
 
-function buildCategories() {
+function buildCategories(optimizedImages) {
   const files = readFolder(path.join(CONTENT, 'categories'));
   const categories = [];
   const seen = new Set();
@@ -252,7 +295,7 @@ function buildCategories() {
       name,
       description: str(d.description),
       body: parsed.body,
-      image: imagePath(d.image) || PLACEHOLDER_CATEGORY,
+      image: imagePath(d.image, optimizedImages) || PLACEHOLDER_CATEGORY,
       featured: bool(d.featured, false),
       displayOrder: num(d.displayOrder, 99),
       seoTitle: str(d.seoTitle) || `${name} - Shiv Trading India`,
@@ -266,7 +309,7 @@ function buildCategories() {
 
 /* ----------------------------------------------------------------- settings */
 
-function buildSettings() {
+function buildSettings(optimizedImages) {
   const files = readFolder(path.join(CONTENT, 'settings'));
   const settings = {};
 
@@ -280,7 +323,7 @@ function buildSettings() {
   // Normalise image paths anywhere in the settings tree.
   for (const group of Object.values(settings)) {
     for (const [k, v] of Object.entries(group)) {
-      if (/image|logo|photo/i.test(k) && typeof v === 'string') group[k] = imagePath(v);
+      if (/image|logo|photo/i.test(k) && typeof v === 'string') group[k] = imagePath(v, optimizedImages);
     }
   }
 
@@ -342,7 +385,7 @@ function buildSitemap(products, categories) {
 
 /* --------------------------------------------------------------------- main */
 
-function main() {
+async function main() {
   console.log('\nShiv Trading India - building site content\n');
 
   if (!fs.existsSync(CONTENT)) {
@@ -353,6 +396,31 @@ function main() {
   const products = buildProducts();
   const categories = buildCategories();
   const settings = buildSettings();
+  const referencedImages = [
+    ...products.flatMap((product) => [product.primaryImage, ...product.images]),
+    ...categories.map((category) => category.image),
+    ...Object.values(settings).flatMap((group) =>
+      Object.entries(group)
+        .filter(([key, value]) => /image|logo|photo/i.test(key) && typeof value === 'string')
+        .map(([, value]) => value)
+    ),
+  ];
+  const optimizedImages = await optimizeUploadedImages(referencedImages);
+
+  for (const product of products) {
+    product.primaryImage = imagePath(product.primaryImage, optimizedImages);
+    product.images = product.images.map((image) => imagePath(image, optimizedImages));
+  }
+  for (const category of categories) {
+    category.image = imagePath(category.image, optimizedImages);
+  }
+  for (const group of Object.values(settings)) {
+    for (const [key, value] of Object.entries(group)) {
+      if (/image|logo|photo/i.test(key) && typeof value === 'string') {
+        group[key] = imagePath(value, optimizedImages);
+      }
+    }
+  }
 
   crossCheck(products, categories);
 
@@ -380,4 +448,7 @@ function main() {
   console.log('');
 }
 
-main();
+main().catch((err) => {
+  console.error('ERROR: Could not build site content.', err);
+  process.exitCode = 1;
+});

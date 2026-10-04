@@ -43,7 +43,10 @@ frontend can fetch in a single request. It also removes unpublished products (so
 drafts never reach a visitor), fills in sensible defaults, and warns about
 problems like a product pointing at a category that no longer exists.
 
-The whole cycle from Publish to live is usually **one to two minutes**.
+The whole cycle from Publish to live is usually **one to two minutes**. An
+uploaded image appears on the public site after its content is saved and that
+Netlify deploy finishes. During the build, CMS originals are kept in the media
+library while smaller WebP display copies are generated for the site.
 
 ---
 
@@ -116,6 +119,7 @@ assets/
     logo.png             client-supplied master artwork (never edit)
     logo-mark*.png       derived header/footer variants (npm run logo)
     uploads/             where CMS image uploads land
+    optimized/           generated WebP copies used for public display
     placeholders/        generated stand-in artwork
 
 scripts/

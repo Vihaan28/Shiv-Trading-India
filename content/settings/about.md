@@ -1,13 +1,13 @@
 ---
 heroEyebrow: About us
-heroTitle: Twenty-five years supplying winding and insulation materials
+heroTitle: Fourty-Five Years Supplying Winding And Insulation Materials
 heroDescription: Shiv Trading India Private Limited is a Delhi-based trading and
   supply business serving the electrical manufacturing and rewinding trade.
 introHeading: Who we are
 introText: >-
   Shiv Trading India Private Limited trades in and supplies electrical winding
   and insulation materials from Bhagirath Palace, Chandni Chowk, in New Delhi.
-  We have been doing it for approximately twenty-five years.
+  We have been doing it for approximately fourty-five years.
 
 
   We are a trading and supply business, not a manufacturer. What we bring is range, availability and specification knowledge: we hold the materials that transformer builders, motor manufacturers and rewinding workshops need, and we know enough about them to help you order the right thing the first time.
@@ -32,7 +32,7 @@ approachItems:
 experienceHeading: Why experience matters here
 experienceText: >-
   Winding and insulation materials look interchangeable on a price list and are
-  not. A Class F enamel in a Class H application, kraft paper where aramid was
+  not. A Class-F enamel in a Class-H application, kraft paper where aramid was
   specified, or a film that is a shade too thin for the slot -- these are the
   problems that come back as warranty claims months later.
 

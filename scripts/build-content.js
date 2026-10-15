@@ -32,7 +32,7 @@ const sharp = require('sharp');
 
 const ROOT = path.resolve(__dirname, '..');
 const CONTENT = path.join(ROOT, 'content');
-const SITE_URL = 'https://www.shivtradingindia.com';
+const SITE_URL = 'https://www.shivtradingindia.in';
 const UPLOADS = path.join(ROOT, 'assets', 'images', 'uploads');
 const OPTIMIZED_IMAGES = path.join(ROOT, 'assets', 'images', 'optimized');
 

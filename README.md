@@ -21,7 +21,7 @@ If you are an employee who just needs to add a product, you want
 This matters, because it explains why there is a "build" at all.
 
 ```
-1.  An employee opens shivtradingindia.com/admin and clicks Publish
+1.  An employee opens shivtradingindia.in/admin and clicks Publish
               ↓
 2.  Decap CMS saves a Markdown file into content/products/ in GitHub
               ↓
@@ -245,7 +245,7 @@ Invite yourself first and check it works before inviting anyone else.
 ### Step 11 — Open the content manager
 
 Go to `https://your-site.netlify.app/admin` (later
-`https://www.shivtradingindia.com/admin`) and sign in.
+`https://www.shivtradingindia.in/admin`) and sign in.
 
 You should see **Products**, **Categories** and **Website Settings**.
 
@@ -307,12 +307,12 @@ see the change, hard-refresh with `Ctrl+Shift+R`.
 
 # Connecting the custom domain
 
-Assumes you own `shivtradingindia.com` through a registrar such as GoDaddy,
+Assumes you own `shivtradingindia.in` through a registrar such as GoDaddy,
 BigRock or Namecheap.
 
 ### 1. Add the domain in Netlify
 
-**Domain management → Add a domain →** enter `shivtradingindia.com` → **Verify**
+**Domain management → Add a domain →** enter `shivtradingindia.in` → **Verify**
 → **Add domain**.
 
 Netlify will then show you what DNS to configure. There are two routes.
@@ -361,7 +361,7 @@ configuration** then **Provision certificate**.
 ### 5. www or not
 
 Netlify redirects one to the other automatically. Set your preference under
-**Domain management → Primary domain**. `www.shivtradingindia.com` is the
+**Domain management → Primary domain**. `www.shivtradingindia.in` is the
 default assumed throughout this project — it is what appears in `sitemap.xml`,
 `robots.txt` and the canonical tags.
 
@@ -415,7 +415,7 @@ Once the custom domain is live:
 
 1. Add the site to [Google Search Console](https://search.google.com/search-console).
 2. Verify ownership (the DNS TXT record method is easiest if Netlify runs your DNS).
-3. Submit `https://www.shivtradingindia.com/sitemap.xml`.
+3. Submit `https://www.shivtradingindia.in/sitemap.xml`.
 
 The sitemap regenerates on every deploy, so new products appear in it
 automatically.

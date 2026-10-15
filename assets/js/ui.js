@@ -384,6 +384,6 @@ window.STI = window.STI || {};
   };
 
   UI.absoluteUrl = function (pathname) {
-    return 'https://www.shivtradingindia.com' + pathname;
+    return 'https://www.shivtradingindia.in' + pathname;
   };
 })(window.STI);

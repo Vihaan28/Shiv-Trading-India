@@ -336,7 +336,7 @@ function verifySignature(event) {
 
 Register the webhook in Meta → your app → **WhatsApp → Configuration**:
 
-- **Callback URL:** `https://www.shivtradingindia.com/.netlify/functions/whatsapp-webhook`
+- **Callback URL:** `https://www.shivtradingindia.in/.netlify/functions/whatsapp-webhook`
 - **Verify token:** whatever you set as `WHATSAPP_VERIFY_TOKEN`
 - **Subscribe to:** `messages`
 

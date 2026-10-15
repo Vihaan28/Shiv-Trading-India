@@ -25,8 +25,8 @@ media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"
 
 publish_mode: simple
-site_url: https://www.shivtradingindia.com
-display_url: https://www.shivtradingindia.com
+site_url: https://www.shivtradingindia.in
+display_url: https://www.shivtradingindia.in
 # Relative, so it also resolves on Netlify deploy previews and locally.
 logo_url: /assets/images/logo-mark.png
 
@@ -66,7 +66,7 @@ collections:
         pattern:
           ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Use lowercase letters, numbers and hyphens only — for example: enamelled-copper-wire']
         hint: >-
-          This becomes the page address, e.g. shivtradingindia.com/product/enamelled-copper-wire.
+          This becomes the page address, e.g. shivtradingindia.in/product/enamelled-copper-wire.
           Do not change it once the product is live — old links will stop working.
 
       - label: Category
@@ -240,7 +240,7 @@ collections:
         pattern:
           ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Use lowercase letters, numbers and hyphens only']
         hint: >-
-          Becomes shivtradingindia.com/category/your-slug. Do not change it once
+          Becomes shivtradingindia.in/category/your-slug. Do not change it once
           products have been assigned to this category.
 
       - label: Description

@@ -37,7 +37,7 @@ for a normal daily change.
 ## 1. How to log in
 
 1. Open your web browser.
-2. Go to **www.shivtradingindia.com/admin**
+2. Go to **www.shivtradingindia.in/admin**
 3. Click **Log in with Netlify Identity**.
 4. Type your email address and password.
 5. Click **Log in**.
@@ -332,7 +332,7 @@ Categories are the groups on the homepage and in the catalogue filter.
 4. Click **Publish**.
 
 The new category page starts working immediately at
-`www.shivtradingindia.com/category/your-slug`. It appears in the homepage grid,
+`www.shivtradingindia.in/category/your-slug`. It appears in the homepage grid,
 the catalogue filter and the footer automatically. **Nobody needs to build
 anything.**
 
@@ -486,7 +486,7 @@ city, their notes, and the full list of products with quantities.
 ## 21. Common problems
 
 **"I cannot log in"**
-Check the address is exactly `www.shivtradingindia.com/admin`. If the login box
+Check the address is exactly `www.shivtradingindia.in/admin`. If the login box
 never appears, hard-refresh (`Ctrl+Shift+R`). If it says your account does not
 exist, ask your administrator to re-invite you.
 

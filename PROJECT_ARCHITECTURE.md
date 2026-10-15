@@ -359,7 +359,7 @@ The pressure point is Git repository size from images, not the JSON.
   crawlers and some social scrapers see the template's default meta tags.
 - Search is a linear scan over all products. Fine to a few thousand; beyond that
   it needs an index.
-- The canonical host `https://www.shivtradingindia.com` is hardcoded in three
+- The canonical host `https://www.shivtradingindia.in` is hardcoded in three
   places: `SITE_URL` in `scripts/build-content.js`, `UI.absoluteUrl` in
   `assets/js/ui.js`, and the `<link rel="canonical">` tags in the HTML.
 - The header and footer are duplicated across the HTML files. Intentional —

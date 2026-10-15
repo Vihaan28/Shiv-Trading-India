@@ -15,7 +15,7 @@ deployment, see [README.md](README.md).
 |---|---|---|
 | **GitHub** | The website's files and full history of every change | github.com |
 | **Netlify** | Hosting, employee logins, form submissions | app.netlify.com |
-| **Domain registrar** | `shivtradingindia.com` itself | wherever you bought it |
+| **Domain registrar** | `shivtradingindia.in` itself | wherever you bought it |
 
 Keep all three logins somewhere safe and shared with at least one other trusted
 person. If you lose the Netlify account, the website goes offline. If you lose
@@ -239,7 +239,7 @@ Check in order:
 
 ## The whole catalogue is empty
 
-Every page shows no products at all. Open `www.shivtradingindia.com/data.json`
+Every page shows no products at all. Open `www.shivtradingindia.in/data.json`
 in a browser.
 
 - **404 or an error page** — the build did not run or did not finish. Check
@@ -310,8 +310,9 @@ The full walkthrough is in [README.md](README.md). Quick reference:
 - Domain settings live in Netlify → **Domain management**
 - SSL is free and automatic once DNS is correct
 - www ↔ non-www redirects are handled automatically; set which one is primary
-- If you change the primary domain, the canonical URLs in the code assume
-  `www.shivtradingindia.com` — tell your developer, as three files need updating
+- The site's canonical domain is `www.shivtradingindia.in`. If you make another
+   host primary, ask your developer to update the site URL, shared URL helper,
+   and page metadata in the code.
 
 ---
 

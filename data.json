@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-04T11:22:32.364Z",
-  "siteUrl": "https://www.shivtradingindia.com",
+  "generatedAt": "2026-10-15T06:36:38.587Z",
+  "siteUrl": "https://www.shivtradingindia.in",
   "products": [
     {
       "slug": "aspha-kraft-paper-black",
@@ -13,9 +13,11 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-kraft-paper-electrical-grade.svg",
+      "primaryImage": "/assets/images/optimized/e8891dee70456d90.webp",
       "images": [
-        "/assets/images/placeholders/cat-kraft-paper-electrical-grade.svg"
+        "/assets/images/optimized/e8891dee70456d90.webp",
+        "/assets/images/placeholders/cat-kraft-paper-electrical-grade.svg",
+        "/assets/images/optimized/31717e64658b9dad.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -82,9 +84,11 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg",
+      "primaryImage": "/assets/images/optimized/e110b4fbb5498d33.webp",
       "images": [
-        "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg"
+        "/assets/images/optimized/e110b4fbb5498d33.webp",
+        "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg",
+        "/assets/images/optimized/a69c957275c292e1.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -108,7 +112,8 @@
       "primaryImage": "/assets/images/optimized/8eddbe0ff6d31693.webp",
       "images": [
         "/assets/images/optimized/8eddbe0ff6d31693.webp",
-        "/assets/images/placeholders/cat-enamelled-aluminium-winding-wire.svg"
+        "/assets/images/placeholders/cat-enamelled-aluminium-winding-wire.svg",
+        "/assets/images/optimized/7484d30008f11fb3.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -152,8 +157,9 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per roll",
-      "primaryImage": "/assets/images/placeholders/cat-insulating-tapes-threads.svg",
+      "primaryImage": "/assets/images/optimized/b2d1285ff4d5149e.webp",
       "images": [
+        "/assets/images/optimized/b2d1285ff4d5149e.webp",
         "/assets/images/placeholders/cat-insulating-tapes-threads.svg"
       ],
       "specifications": [],
@@ -198,9 +204,11 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-submersible-copper-wire.svg",
+      "primaryImage": "/assets/images/optimized/c57345a28db73d6f.webp",
       "images": [
-        "/assets/images/placeholders/cat-submersible-copper-wire.svg"
+        "/assets/images/optimized/c57345a28db73d6f.webp",
+        "/assets/images/placeholders/cat-submersible-copper-wire.svg",
+        "/assets/images/optimized/30aff2348c502ebc.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -221,9 +229,11 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-polyester-film-electrical-grade.svg",
+      "primaryImage": "/assets/images/optimized/b1fcc0c83fa0d8e4.webp",
       "images": [
-        "/assets/images/placeholders/cat-polyester-film-electrical-grade.svg"
+        "/assets/images/optimized/b1fcc0c83fa0d8e4.webp",
+        "/assets/images/placeholders/cat-polyester-film-electrical-grade.svg",
+        "/assets/images/optimized/f36b079ce94ed5fc.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -244,9 +254,10 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-fiber-glass-wire.svg",
+      "primaryImage": "/assets/images/optimized/bf4dea7be2df16ad.webp",
       "images": [
-        "/assets/images/placeholders/cat-fiber-glass-wire.svg"
+        "/assets/images/optimized/bf4dea7be2df16ad.webp",
+        "/assets/images/optimized/87065d4fd01e42e0.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -267,9 +278,11 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-submersible-aluminium-wire.svg",
+      "primaryImage": "/assets/images/optimized/1dc9136945895194.webp",
       "images": [
-        "/assets/images/placeholders/cat-submersible-aluminium-wire.svg"
+        "/assets/images/optimized/1dc9136945895194.webp",
+        "/assets/images/optimized/a1d02c7c9518fdb5.webp",
+        "/assets/images/optimized/da5e3339a678722c.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -290,9 +303,10 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per litre",
-      "primaryImage": "/assets/images/placeholders/cat-insulating-varnish.svg",
+      "primaryImage": "/assets/images/optimized/486d698e92300acd.webp",
       "images": [
-        "/assets/images/placeholders/cat-insulating-varnish.svg"
+        "/assets/images/optimized/486d698e92300acd.webp",
+        "/assets/images/optimized/e01328ecd0c61c07.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -336,9 +350,10 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-f-class-insulation-paper.svg",
+      "primaryImage": "/assets/images/optimized/bdeac5b07b684dba.webp",
       "images": [
-        "/assets/images/placeholders/cat-f-class-insulation-paper.svg"
+        "/assets/images/optimized/bdeac5b07b684dba.webp",
+        "/assets/images/optimized/4b08d16f6e995671.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -382,9 +397,11 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-kraft-paper-electrical-grade.svg",
+      "primaryImage": "/assets/images/optimized/eddbf174976b51b4.webp",
       "images": [
-        "/assets/images/placeholders/cat-kraft-paper-electrical-grade.svg"
+        "/assets/images/optimized/eddbf174976b51b4.webp",
+        "/assets/images/placeholders/cat-kraft-paper-electrical-grade.svg",
+        "/assets/images/optimized/31717e64658b9dad.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -428,9 +445,12 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg",
+      "primaryImage": "/assets/images/optimized/c34573a3ffaddb60.webp",
       "images": [
-        "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg"
+        "/assets/images/optimized/c34573a3ffaddb60.webp",
+        "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg",
+        "/assets/images/optimized/a25fa102e9647761.webp",
+        "/assets/images/optimized/4c03f159309ec192.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -474,9 +494,11 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-polyester-film-electrical-grade.svg",
+      "primaryImage": "/assets/images/optimized/def6fc4709c86a39.webp",
       "images": [
-        "/assets/images/placeholders/cat-polyester-film-electrical-grade.svg"
+        "/assets/images/optimized/def6fc4709c86a39.webp",
+        "/assets/images/optimized/16bfc826d9335ade.webp",
+        "/assets/images/optimized/09a0dfc4b6a632d9.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -497,9 +519,11 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-submersible-copper-wire.svg",
+      "primaryImage": "/assets/images/optimized/1dc9136945895194.webp",
       "images": [
-        "/assets/images/placeholders/cat-submersible-copper-wire.svg"
+        "/assets/images/optimized/1dc9136945895194.webp",
+        "/assets/images/optimized/da5e3339a678722c.webp",
+        "/assets/images/optimized/a1d02c7c9518fdb5.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -520,9 +544,10 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-enamelled-aluminium-winding-wire.svg",
+      "primaryImage": "/assets/images/optimized/34ccacb825519ca2.webp",
       "images": [
-        "/assets/images/placeholders/cat-enamelled-aluminium-winding-wire.svg"
+        "/assets/images/optimized/34ccacb825519ca2.webp",
+        "/assets/images/optimized/64418dff358ff993.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -543,8 +568,9 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per metre",
-      "primaryImage": "/assets/images/placeholders/cat-insulating-sleeves.svg",
+      "primaryImage": "/assets/images/optimized/ddb802010c02a2da.webp",
       "images": [
+        "/assets/images/optimized/ddb802010c02a2da.webp",
         "/assets/images/placeholders/cat-insulating-sleeves.svg"
       ],
       "specifications": [],
@@ -566,8 +592,9 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-f-class-insulation-paper.svg",
+      "primaryImage": "/assets/images/optimized/9aaabee6d7ae6b6b.webp",
       "images": [
+        "/assets/images/optimized/9aaabee6d7ae6b6b.webp",
         "/assets/images/placeholders/cat-f-class-insulation-paper.svg"
       ],
       "specifications": [],
@@ -589,8 +616,9 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per metre",
-      "primaryImage": "/assets/images/placeholders/cat-insulating-sleeves.svg",
+      "primaryImage": "/assets/images/optimized/2202f460821cf044.webp",
       "images": [
+        "/assets/images/optimized/2202f460821cf044.webp",
         "/assets/images/placeholders/cat-insulating-sleeves.svg"
       ],
       "specifications": [],
@@ -612,8 +640,9 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-dcc-dpc-copper-aluminium-wires.svg",
+      "primaryImage": "/assets/images/optimized/317bcbf8cd00fe21.webp",
       "images": [
+        "/assets/images/optimized/317bcbf8cd00fe21.webp",
         "/assets/images/placeholders/cat-dcc-dpc-copper-aluminium-wires.svg"
       ],
       "specifications": [],
@@ -635,8 +664,9 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg",
+      "primaryImage": "/assets/images/optimized/811f57e6c3cfdb9f.webp",
       "images": [
+        "/assets/images/optimized/811f57e6c3cfdb9f.webp",
         "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg"
       ],
       "specifications": [],
@@ -704,9 +734,10 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-submersible-copper-wire.svg",
+      "primaryImage": "/assets/images/optimized/3820ea8ba2d3dcaf.webp",
       "images": [
-        "/assets/images/placeholders/cat-submersible-copper-wire.svg"
+        "/assets/images/optimized/3820ea8ba2d3dcaf.webp",
+        "/assets/images/optimized/76cc9d80ad5e1c66.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -727,8 +758,9 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-dcc-dpc-copper-aluminium-wires.svg",
+      "primaryImage": "/assets/images/optimized/317bcbf8cd00fe21.webp",
       "images": [
+        "/assets/images/optimized/317bcbf8cd00fe21.webp",
         "/assets/images/placeholders/cat-dcc-dpc-copper-aluminium-wires.svg"
       ],
       "specifications": [],
@@ -750,8 +782,9 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per metre",
-      "primaryImage": "/assets/images/placeholders/cat-insulating-sleeves.svg",
+      "primaryImage": "/assets/images/optimized/eef50da9bd9fc936.webp",
       "images": [
+        "/assets/images/optimized/eef50da9bd9fc936.webp",
         "/assets/images/placeholders/cat-insulating-sleeves.svg"
       ],
       "specifications": [],
@@ -773,9 +806,10 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-submersible-copper-wire.svg",
+      "primaryImage": "/assets/images/optimized/943bc7d242c5a383.webp",
       "images": [
-        "/assets/images/placeholders/cat-submersible-copper-wire.svg"
+        "/assets/images/optimized/943bc7d242c5a383.webp",
+        "/assets/images/optimized/76cc9d80ad5e1c66.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -796,9 +830,11 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg",
+      "primaryImage": "/assets/images/optimized/3c6e2e9c5021891d.webp",
       "images": [
-        "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg"
+        "/assets/images/optimized/3c6e2e9c5021891d.webp",
+        "/assets/images/optimized/9fb071e6e4595c7d.webp",
+        "/assets/images/optimized/797cd6acf3242db8.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -819,9 +855,11 @@
       "priceType": "price-on-request",
       "price": "",
       "priceUnit": "per kg",
-      "primaryImage": "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg",
+      "primaryImage": "/assets/images/optimized/ddbe1d1bcbb06f64.webp",
       "images": [
-        "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg"
+        "/assets/images/optimized/ddbe1d1bcbb06f64.webp",
+        "/assets/images/optimized/8a23e9996b0eb088.webp",
+        "/assets/images/optimized/eb7553538bcf66eb.webp"
       ],
       "specifications": [],
       "availability": "on-request",
@@ -861,7 +899,7 @@
       "name": "Enamelled Copper Winding Wire",
       "description": "Enamelled copper conductor for transformer, motor and coil windings, stocked across several established brands.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-enamelled-copper-winding-wire.svg",
+      "image": "/assets/images/optimized/aa7d16a7c2b5206b.webp",
       "featured": true,
       "displayOrder": 1,
       "seoTitle": "Enamelled Copper Winding Wire - Shiv Trading India",
@@ -872,7 +910,7 @@
       "name": "Submersible Copper Wire",
       "description": "Enamelled copper winding wire rated for continuous immersion, used in submersible motor and pump windings.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-submersible-copper-wire.svg",
+      "image": "/assets/images/optimized/630ae9ab2b8b01e6.webp",
       "featured": false,
       "displayOrder": 2,
       "seoTitle": "Submersible Copper Wire - Shiv Trading India",
@@ -883,7 +921,7 @@
       "name": "Enamelled Aluminium Winding Wire",
       "description": "Enamelled aluminium conductor for windings where weight and cost favour aluminium over copper.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-enamelled-aluminium-winding-wire.svg",
+      "image": "/assets/images/optimized/4d227805eb00d042.webp",
       "featured": true,
       "displayOrder": 3,
       "seoTitle": "Enamelled Aluminium Winding Wire - Shiv Trading India",
@@ -894,7 +932,7 @@
       "name": "Submersible Aluminium Wire",
       "description": "Enamelled aluminium winding wire rated for submersible motor and pump applications.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-submersible-aluminium-wire.svg",
+      "image": "/assets/images/optimized/2a07ca54fcdc1bb1.webp",
       "featured": false,
       "displayOrder": 4,
       "seoTitle": "Submersible Aluminium Wire - Shiv Trading India",
@@ -905,7 +943,7 @@
       "name": "F-Class Insulation Paper",
       "description": "Class F insulation paper for windings and transformers operating at 155 degrees C continuous.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-f-class-insulation-paper.svg",
+      "image": "/assets/images/uploads/f-class-paper.avif",
       "featured": true,
       "displayOrder": 5,
       "seoTitle": "F-Class Insulation Paper - Shiv Trading India",
@@ -916,7 +954,7 @@
       "name": "Polyester Film (Electrical Grade)",
       "description": "Electrical grade polyester (PET) film for slot liners, phase and interlayer insulation.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-polyester-film-electrical-grade.svg",
+      "image": "/assets/images/optimized/33379a42d5f5dfe2.webp",
       "featured": true,
       "displayOrder": 6,
       "seoTitle": "Polyester Film (Electrical Grade) - Shiv Trading India",
@@ -927,7 +965,7 @@
       "name": "Kraft Paper (Electrical Grade)",
       "description": "Electrical grade kraft paper for transformer interlayer insulation, barrier applications and conductor covering.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-kraft-paper-electrical-grade.svg",
+      "image": "/assets/images/optimized/31717e64658b9dad.webp",
       "featured": true,
       "displayOrder": 7,
       "seoTitle": "Kraft Paper (Electrical Grade) - Shiv Trading India",
@@ -938,7 +976,7 @@
       "name": "Insulating Varnish",
       "description": "Electrical insulating varnish for impregnating windings and improving their thermal and mechanical stability.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-insulating-varnish.svg",
+      "image": "/assets/images/optimized/62451f7fea4e7676.webp",
       "featured": false,
       "displayOrder": 8,
       "seoTitle": "Insulating Varnish - Shiv Trading India",
@@ -949,7 +987,7 @@
       "name": "B-Class Insulating Paper",
       "description": "Class B insulation paper for windings and coils operating at 130 degrees C continuous.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-b-class-insulating-paper.svg",
+      "image": "/assets/images/optimized/1e5672491421c825.webp",
       "featured": false,
       "displayOrder": 9,
       "seoTitle": "B-Class Insulating Paper - Shiv Trading India",
@@ -960,7 +998,7 @@
       "name": "Fiber Glass Wire",
       "description": "Fibreglass covered conductor and sleeving material for high-temperature electrical applications.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-fiber-glass-wire.svg",
+      "image": "/assets/images/optimized/e36eea97e1adf300.webp",
       "featured": false,
       "displayOrder": 10,
       "seoTitle": "Fiber Glass Wire - Shiv Trading India",
@@ -971,7 +1009,7 @@
       "name": "Insulating Sleeves",
       "description": "Insulating sleeving in several materials and thermal classes, for lead and conductor covering.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-insulating-sleeves.svg",
+      "image": "/assets/images/optimized/a71c416125447ad6.webp",
       "featured": true,
       "displayOrder": 11,
       "seoTitle": "Insulating Sleeves - Shiv Trading India",
@@ -982,7 +1020,7 @@
       "name": "Insulating Tapes & Threads",
       "description": "Cotton and adhesive tapes and binding thread for coil banding and general winding work.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-insulating-tapes-threads.svg",
+      "image": "/assets/images/optimized/938f5597cdcfbfe2.webp",
       "featured": false,
       "displayOrder": 12,
       "seoTitle": "Insulating Tapes & Threads - Shiv Trading India",
@@ -993,7 +1031,7 @@
       "name": "DCC / DPC Copper & Aluminium Wires",
       "description": "Double cotton covered and double paper covered copper and aluminium wire for specialised winding applications.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-dcc-dpc-copper-aluminium-wires.svg",
+      "image": "/assets/images/optimized/6eb611e3235d4ea1.webp",
       "featured": false,
       "displayOrder": 13,
       "seoTitle": "DCC / DPC Copper & Aluminium Wires - Shiv Trading India",
@@ -1004,7 +1042,7 @@
       "name": "Bare Copper Winding Wire",
       "description": "Uninsulated copper conductor for windings insulated separately, and for connection and jumper work.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-bare-copper-winding-wire.svg",
+      "image": "/assets/images/optimized/160ccd58621b9364.webp",
       "featured": false,
       "displayOrder": 14,
       "seoTitle": "Bare Copper Winding Wire - Shiv Trading India",
@@ -1015,7 +1053,7 @@
       "name": "Copper Strips",
       "description": "Rectangular copper conductor for high current windings and busbar connections.",
       "body": "",
-      "image": "/assets/images/placeholders/cat-copper-strips.svg",
+      "image": "/assets/images/optimized/b6fc3bbb1e718e07.webp",
       "featured": false,
       "displayOrder": 15,
       "seoTitle": "Copper Strips - Shiv Trading India",

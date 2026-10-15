@@ -7,4 +7,4 @@ Disallow: /rfq.html
 Disallow: /search.html
 Disallow: /thank-you.html
 
-Sitemap: https://www.shivtradingindia.com/sitemap.xml
+Sitemap: https://www.shivtradingindia.in/sitemap.xml

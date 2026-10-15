@@ -15,9 +15,9 @@ description: >-
 priceType: price-on-request
 price: ""
 priceUnit: per kg
-primaryImage: ""
+primaryImage: /assets/images/uploads/whatsapp-image-2026-10-15-at-12.48.43-pm.jpeg
 images:
-  - /assets/images/placeholders/cat-enamelled-copper-winding-wire.svg
+  - /assets/images/uploads/whatsapp-image-2026-10-15-at-12.49.15-pm.jpeg
 specifications: []
 availability: on-request
 published: true

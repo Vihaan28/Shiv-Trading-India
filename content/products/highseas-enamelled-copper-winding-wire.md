@@ -18,6 +18,7 @@ priceUnit: per kg
 primaryImage: /assets/images/uploads/whatsapp-image-2026-10-15-at-12.48.43-pm.jpeg
 images:
   - /assets/images/uploads/whatsapp-image-2026-10-15-at-12.49.15-pm.jpeg
+  - /assets/images/uploads/highseas-copper-wire-industrial-poster.png
 specifications: []
 availability: on-request
 published: true

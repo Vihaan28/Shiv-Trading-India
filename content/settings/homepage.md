@@ -4,7 +4,7 @@ heroTitle: One Stop Solution for winding materials
 heroDescription: For over 45 years, Shiv Trading India has supplied winding
   wires and electrical insulation materials to transformer manufacturers, motor
   rewinders and industrial workshops across India.
-heroImage: /assets/images/placeholders/hero.svg
+heroImage: /assets/images/uploads/whatsapp-image-2026-10-26-at-2.23.47-pm.jpeg
 heroPrimaryCtaText: Explore Products
 heroPrimaryCtaLink: /products.html
 heroSecondaryCtaText: Request a Quote

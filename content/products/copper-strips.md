@@ -14,9 +14,8 @@ description: >-
 priceType: price-on-request
 price: ""
 priceUnit: per kg
-primaryImage: /assets/images/placeholders/cat-copper-strips.svg
-images:
-  - /assets/images/uploads/etp-grade-copper-strip-1000x1000.webp
+primaryImage: /assets/images/uploads/etp-grade-copper-strip-1000x1000.webp
+images: []
 specifications: []
 availability: on-request
 published: true

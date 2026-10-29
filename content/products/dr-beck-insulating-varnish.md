@@ -5,21 +5,23 @@ category: insulating-varnish
 brand: Dr. BECK
 shortDescription: Dr. beck insulating varnish, stocked for industrial buyers.
 description: >-
-  Dr. beck insulating varnish is available to order through Shiv Trading India. Share the specification and quantity you need and we will confirm availability and price.
+  Dr. beck insulating varnish is available to order through Shiv Trading India.
+  Share the specification and quantity you need and we will confirm availability
+  and price.
 
-  
+
 
   Detailed technical specifications for this listing will be added shortly.
 priceType: price-on-request
 price: ""
 priceUnit: per litre
-primaryImage: /assets/images/placeholders/cat-insulating-varnish.svg
+primaryImage: /assets/images/uploads/image_97b7c6d0.jpg
 images:
-  - /assets/images/placeholders/cat-insulating-varnish.svg
+  - /assets/images/uploads/image_d501ca99.jpg
 specifications: []
 availability: on-request
+published: true
 featured: false
 showOnHomepage: false
-published: true
 displayOrder: 2
 ---

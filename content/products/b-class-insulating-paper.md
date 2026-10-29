@@ -16,7 +16,7 @@ price: ""
 priceUnit: per kg
 primaryImage: /assets/images/uploads/insulating-flexible-composite-material-250x250.jpg
 images:
-  - /assets/images/placeholders/cat-b-class-insulating-paper.svg
+  - /assets/images/uploads/whatsapp-image-2026-10-29-at-2.04.26-pm.jpeg
   - /assets/images/uploads/image_530d74cd.jpg
 specifications: []
 availability: on-request

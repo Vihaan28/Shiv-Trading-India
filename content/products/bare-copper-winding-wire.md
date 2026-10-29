@@ -14,9 +14,8 @@ description: >-
 priceType: price-on-request
 price: ""
 priceUnit: per kg
-primaryImage: /assets/images/placeholders/cat-bare-copper-winding-wire.svg
-images:
-  - /assets/images/uploads/copper-earthing-wire-1000x1000.webp
+primaryImage: /assets/images/uploads/copper-earthing-wire-1000x1000.webp
+images: []
 specifications: []
 availability: on-request
 published: true
